@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var go = "go"
         var edi = "edi"
-        
-        
+        var s = "s"
+
         return true
     }
 
