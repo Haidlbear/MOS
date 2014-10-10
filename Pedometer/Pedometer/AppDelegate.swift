@@ -15,11 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        var go = "go"
-        var edi = "edi"
-        var s = "s"
-
+        //TO-DO
         return true
     }
 

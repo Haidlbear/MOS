@@ -405,6 +405,7 @@
 				239ABD3319E6ADCE00493B53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		239ABD3419E6ADCE00493B53 /* Build configuration list for PBXNativeTarget "PedometerTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +414,7 @@
 				239ABD3619E6ADCE00493B53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
