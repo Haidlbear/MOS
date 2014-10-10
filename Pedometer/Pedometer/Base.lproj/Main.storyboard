@@ -91,14 +91,14 @@
                                     <mask key="constraints">
                                         <exclude reference="0UT-2b-kfZ"/>
                                         <exclude reference="Ucf-o4-cGu"/>
+                                        <exclude reference="FzI-zX-wO2"/>
+                                        <exclude reference="hhJ-aw-RSq"/>
+                                        <exclude reference="wQ1-WX-Koa"/>
                                         <exclude reference="8Fs-9p-AaD"/>
                                         <exclude reference="TJc-vG-X8W"/>
                                         <exclude reference="ofl-0n-T4S"/>
                                         <exclude reference="qZJ-gn-ApB"/>
                                         <exclude reference="yT2-U0-AWK"/>
-                                        <exclude reference="FzI-zX-wO2"/>
-                                        <exclude reference="hhJ-aw-RSq"/>
-                                        <exclude reference="wQ1-WX-Koa"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -109,14 +109,14 @@
                                     <mask key="constraints">
                                         <include reference="0UT-2b-kfZ"/>
                                         <include reference="Ucf-o4-cGu"/>
+                                        <include reference="FzI-zX-wO2"/>
+                                        <include reference="hhJ-aw-RSq"/>
+                                        <include reference="wQ1-WX-Koa"/>
                                         <include reference="8Fs-9p-AaD"/>
                                         <include reference="TJc-vG-X8W"/>
                                         <include reference="ofl-0n-T4S"/>
                                         <include reference="qZJ-gn-ApB"/>
                                         <include reference="yT2-U0-AWK"/>
-                                        <include reference="FzI-zX-wO2"/>
-                                        <include reference="hhJ-aw-RSq"/>
-                                        <include reference="wQ1-WX-Koa"/>
                                     </mask>
                                 </variation>
                             </view>
