@@ -39,9 +39,6 @@ class ViewController: UIViewController {
             
             self.values.append(absoluteValue)
             
-            self.LabelX.text = NSString(format:"%.4f", acclX)
-            self.LabelY.text = NSString(format:"%.4f", acclY)
-            self.LabelZ.text = NSString(format:"%.4f", acclZ)
             
             var index = self.values.count - 1
             if( index > -1 && absoluteValue > 1.5 && self.values[index] > 1 && self.values[index] > self.values[index-1]) {
