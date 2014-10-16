@@ -17,10 +17,6 @@ class Main: UITableViewController {
     var values: [Double]=[Double]()
     var steps: Int=0
     
-    @IBOutlet var LabelSteps: UILabel!
-    @IBOutlet var LabelX: UILabel!
-    @IBOutlet var LabelY: UILabel!
-    @IBOutlet var LabelZ: UILabel!
     @IBOutlet var titleBar: UINavigationItem!
     
     override func viewDidLoad() {
@@ -44,7 +40,6 @@ class Main: UITableViewController {
             var index = self.values.count - 1
             if( index > -1 && absoluteValue > 1.5 && self.values[index] > 1 && self.values[index] > self.values[index-1]) {
                 self.steps = self.steps + 1
-                self.LabelSteps.text = String(self.steps)
             }
             
         })
@@ -75,11 +70,11 @@ class Main: UITableViewController {
         return cell
         
     }
-    /*
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 200.0
     }
-*/
+
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
