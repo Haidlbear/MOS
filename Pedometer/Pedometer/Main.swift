@@ -19,7 +19,7 @@ class Main: UIViewController, UITableViewDataSource {
     
     var values: [Double]=[Double]()
     var steps: Int=0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +43,9 @@ class Main: UIViewController, UITableViewDataSource {
                 self.steps = self.steps + 1
             }
             
-            self.tv.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+            //self.tv.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
             self.tv.dataSource = self
+            self.tv.reloadData()
         })
         
         
@@ -59,12 +60,17 @@ class Main: UIViewController, UITableViewDataSource {
         return sqrt(pow(acclX,2) + pow(acclY,2) + pow(acclZ,2))
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        if(indexPath.row == 0 || indexPath.row == 1){
-            cell = tableView.dequeueReusableCellWithIdentifier("singleCell", forIndexPath: indexPath) as UITableViewCell
+        if(indexPath.row == 0){
+            cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UIProgressView).progress = 0.8
         }
+//        if(indexPath.row == 1){
+//            
+//            cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
+//        }
+            
             
         else{
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
@@ -75,13 +81,13 @@ class Main: UIViewController, UITableViewDataSource {
         
     }
     
-     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 200.0
     }
     
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-
+    
 }
