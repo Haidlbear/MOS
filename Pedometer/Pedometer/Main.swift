@@ -64,7 +64,6 @@ class Main: UIViewController, UITableViewDataSource {
             //self.tv.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
             
             self.tv.dataSource = self
-            self.tv.reloadData()
         })
         
         
@@ -87,10 +86,10 @@ class Main: UIViewController, UITableViewDataSource {
             println("test")
         }
             
-//        if(indexPath.row == 1){
-//            
-//            cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
-//        }
+        if(indexPath.row == 1){
+            
+            cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
+        }
             
             
         else{
