@@ -20,6 +20,7 @@ class Main: UIViewController, UITableViewDataSource {
     var values: [Double]=[Double]()
     var steps: Int=0
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +36,9 @@ class Main: UIViewController, UITableViewDataSource {
             
             var absoluteValue = self.getAbsoluteValue(acclX, acclY: acclY, acclZ: acclZ)
             
+
             self.values.append(absoluteValue)
+            
             
             
             var index = self.values.count - 1
@@ -43,7 +46,9 @@ class Main: UIViewController, UITableViewDataSource {
                 self.steps = self.steps + 1
             }
             
+            
             //self.tv.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+            
             self.tv.dataSource = self
             self.tv.reloadData()
         })
@@ -65,7 +70,9 @@ class Main: UIViewController, UITableViewDataSource {
         if(indexPath.row == 0){
             cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UIProgressView).progress = 0.8
+            println("test")
         }
+            
 //        if(indexPath.row == 1){
 //            
 //            cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
@@ -76,7 +83,7 @@ class Main: UIViewController, UITableViewDataSource {
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
             
         }
-        
+        //cell.labelStepsCount.text = String(self.steps)
         return cell
         
     }
@@ -88,6 +95,11 @@ class Main: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
+    }
+    
+    //change statusbar color to white
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
 }
