@@ -36,10 +36,23 @@ class Main: UIViewController, UITableViewDataSource {
             
             var absoluteValue = self.getAbsoluteValue(acclX, acclY: acclY, acclZ: acclZ)
             
-
+            var tempCounter: Double=0.0;
+            
             self.values.append(absoluteValue)
             
-            
+            if(self.values.count==50)
+            {
+                for index in self.values
+                {
+                    var value = self.values[0]
+                    println(self.values)
+                }
+                
+                for var index = 0; index < self.values.count; ++index {
+                    tempCounter = tempCounter+self.values[index]
+                }
+                
+            }
             
             
             var index = self.values.count - 1
