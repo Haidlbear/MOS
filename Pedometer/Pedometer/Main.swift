@@ -41,6 +41,7 @@ class Main: UIViewController, UITableViewDataSource {
             
             
             
+            
             var index = self.values.count - 1
             if( index > -1 && absoluteValue > 1.5 && self.values[index] > 1 && self.values[index] > self.values[index-1]) {
                 self.steps = self.steps + 1
