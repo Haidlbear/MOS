@@ -45,7 +45,7 @@ class Main: UIViewController, UITableViewDataSource {
                 for index in self.values
                 {
                     var value = self.values[0]
-                    println(self.values)
+                    println(self.values) 
                 }
                 
                 for var index = 0; index < self.values.count; ++index {

@@ -505,7 +505,8 @@
                                                             <exclude reference="Pbd-F0-dus"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="281" y="36" width="13" height="24.5"/>
                                                         <mask key="constraints">
                                                             <include reference="Pbd-F0-dus"/>
                                                         </mask>
