@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2314700319F111E600E8652E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2314700219F111E600E8652E /* Images.xcassets */; };
-		2328490319EFCB8400AECD29 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328490219EFCB8400AECD29 /* Main.swift */; };
 		2328490519EFD20200AECD29 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328490419EFD20200AECD29 /* CustomCell.swift */; };
 		239ABD1819E6ADCE00493B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239ABD1719E6ADCE00493B53 /* AppDelegate.swift */; };
 		239ABD1D19E6ADCE00493B53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239ABD1B19E6ADCE00493B53 /* Main.storyboard */; };
 		239ABD2219E6ADCE00493B53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */; };
 		239ABD2E19E6ADCE00493B53 /* PedometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239ABD2D19E6ADCE00493B53 /* PedometerTests.swift */; };
+		23EE6D2519F92257008F3946 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE6D2419F92257008F3946 /* Main.swift */; };
 		95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */; };
 		95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */; };
 		95EF3C3319F05E9400C2DC98 /* CustomSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF3C3219F05E9400C2DC98 /* CustomSettingsCell.swift */; };
@@ -31,7 +31,6 @@
 
 /* Begin PBXFileReference section */
 		2314700219F111E600E8652E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2328490219EFCB8400AECD29 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2328490419EFD20200AECD29 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		239ABD1219E6ADCE00493B53 /* Pedometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pedometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		239ABD1619E6ADCE00493B53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +40,7 @@
 		239ABD2719E6ADCE00493B53 /* PedometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PedometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		239ABD2C19E6ADCE00493B53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		239ABD2D19E6ADCE00493B53 /* PedometerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerTests.swift; sourceTree = "<group>"; };
+		23EE6D2419F92257008F3946 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
 		95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		95EF3C3219F05E9400C2DC98 /* CustomSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSettingsCell.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				239ABD1719E6ADCE00493B53 /* AppDelegate.swift */,
-				2328490219EFCB8400AECD29 /* Main.swift */,
+				23EE6D2419F92257008F3946 /* Main.swift */,
 				239ABD1B19E6ADCE00493B53 /* Main.storyboard */,
 				2328490419EFD20200AECD29 /* CustomCell.swift */,
 				239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */,
@@ -225,7 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2328490319EFCB8400AECD29 /* Main.swift in Sources */,
+				23EE6D2519F92257008F3946 /* Main.swift in Sources */,
 				2328490519EFD20200AECD29 /* CustomCell.swift in Sources */,
 				239ABD1819E6ADCE00493B53 /* AppDelegate.swift in Sources */,
 				95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */,
