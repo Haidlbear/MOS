@@ -17,10 +17,27 @@ class Main: UIViewController, UITableViewDataSource {
     
     let motionManager = CMMotionManager()
     
-    var values: [Double]=[Double]()
     var steps: Int=0
+    var heart: Int=0
     
-
+    var acclX: Double = 0.0
+    var acclY: Double = 0.0
+    var acclZ: Double = 0.0
+    
+    var absoluteValue: Double = 0.0
+    var lastAbsoluteValue: Double = 0.0
+    var stepDetected: Bool = false
+    
+    var array: [Double] = [Double]()
+    var sumOfArray: Double = 0.0
+    var average: Double = 0.0
+    var oldestValue: Int = 0
+    
+    var timeStamp: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+    var lastTimeStamp: NSTimeInterval = 0
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,42 +47,65 @@ class Main: UIViewController, UITableViewDataSource {
         motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {
             accelerationData, error in
             
-            var acclX: Double = accelerationData.acceleration.x
-            var acclY: Double = accelerationData.acceleration.y
-            var acclZ: Double = accelerationData.acceleration.z
+            self.acclX = accelerationData.acceleration.x
+            self.acclY = accelerationData.acceleration.y
+            self.acclZ = accelerationData.acceleration.z
             
-            var absoluteValue = self.getAbsoluteValue(acclX, acclY: acclY, acclZ: acclZ)
+            self.absoluteValue = self.getAbsoluteValue(self.acclX, acclY: self.acclY, acclZ: self.acclZ)
             
-            var tempCounter: Double=0.0;
-            
-            self.values.append(absoluteValue)
-            
-            if(self.values.count==50)
-            {
-                for index in self.values
-                {
-                    var value = self.values[0]
-                    println(self.values) 
+            //array with 50 actual values
+            if(self.array.count < 50){
+                self.array.append(self.absoluteValue)
+                self.sumOfArray += self.absoluteValue
+            } else {
+                self.sumOfArray = self.sumOfArray - self.array[self.oldestValue] + self.absoluteValue
+                self.average = self.sumOfArray/50
+                
+                self.array[self.oldestValue] = self.absoluteValue
+                
+                //just index
+                if(self.oldestValue == 49){
+                    self.oldestValue = 0
+                } else{
+                    self.oldestValue++
                 }
                 
-                for var index = 0; index < self.values.count; ++index {
-                    tempCounter = tempCounter+self.values[index]
+                //step occure
+                
+                if(self.absoluteValue <= self.lastAbsoluteValue){
+                    if(self.absoluteValue < self.average && !self.stepDetected){
+                        self.lastTimeStamp = self.timeStamp
+                        self.timeStamp = CACurrentMediaTime()
+                        if(self.timeStamp - self.lastTimeStamp > 0.2){
+                            self.steps++
+                        }
+                        self.stepDetected = true
+
+                        //self.tv.reloadData()
+                        
+                    }
+                    
+                }else{
+                    self.stepDetected = false
                 }
                 
+                self.lastAbsoluteValue = self.absoluteValue
             }
             
             
-            var index = self.values.count - 1
-            if( index > -1 && absoluteValue > 1.5 && self.values[index] > 1 && self.values[index] > self.values[index-1]) {
-                self.steps = self.steps + 1
-            }
             
-            
-            //self.tv.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-            
-            self.tv.dataSource = self
         })
         
+        self.tv.dataSource = self
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "heartRate", userInfo: nil, repeats: true)
+        
+        
+    }
+    
+    func heartRate(){
+        self.heart++
+        self.tv.reloadData()
         
     }
     
@@ -83,18 +123,19 @@ class Main: UIViewController, UITableViewDataSource {
         if(indexPath.row == 0){
             cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UIProgressView).progress = 0.8
-            println("test")
-        }
             
+        }
+        
         if(indexPath.row == 1){
             
             cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(3) as UILabel).text = String (self.heart)
         }
             
             
         else{
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
-            
+            (cell.viewWithTag(9) as UILabel).text = String (self.steps)
         }
         //cell.labelStepsCount.text = String(self.steps)
         return cell
