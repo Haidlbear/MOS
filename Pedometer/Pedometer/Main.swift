@@ -171,27 +171,32 @@ class Main: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell
+        var cell:UITableViewCell!
+        
         if(indexPath.row == 0){
             cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(1) as UIProgressView).progress = 0.8
-            
+            (cell.viewWithTag(1) as UILabel).text = String (self.steps)
+            (cell.viewWithTag(2) as UIProgressView).progress = 0.8
+            (cell.viewWithTag(3) as UILabel).text = String (80)
         }
         
         if(indexPath.row == 1){
-            
             cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = String (seconds)
+            (cell.viewWithTag(2) as UILabel).text = String (seconds)
             (cell.viewWithTag(3) as UILabel).text = String (seconds)
+            (cell.viewWithTag(4) as UILabel).text = String (seconds)
+            (cell.viewWithTag(5) as UILabel).text = String (seconds)
         }
         
         if(indexPath.row == 2){
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(9) as UILabel).text = String (self.steps)
+            (cell.viewWithTag(1) as UILabel).text = String (self.steps)
         }
             
-        else{
+        if(indexPath.row == 3){
             cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(5) as UILabel).text = String (houres.format("02")) + ":" + String (minutes.format("02")) + ":" + String(seconds.format("02"))
+            (cell.viewWithTag(1) as UILabel).text = String (houres.format("02")) + ":" + String (minutes.format("02")) + ":" + String(seconds.format("02"))
         }
         
         return cell
