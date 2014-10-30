@@ -350,9 +350,9 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     }
     
     func getHeartBPMData(characteristic: CBCharacteristic!, error: NSError!) {
-        let data:NSData = characteristic.value
+        var data:NSData = characteristic.value
         println(data)
-        let reportData = [UInt8](count: data.length, repeatedValue:0)
+        var reportData = [UInt8](count: data.length, repeatedValue:0)
         data.getBytes(&reportData, length:data.length)
         self.bpm = Int (reportData[1])
     }
