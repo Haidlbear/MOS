@@ -9,24 +9,63 @@
 import UIKit
 import CoreMotion
 
+import CoreBluetooth
+import QuartzCore
+
 extension Int {
     func format(f: String) -> String {
         return NSString(format: "%\(f)d", self)
     }
 }
 
+let scosche_deviceInfoServiceUUID = "180A"
+let scosche_heartRateServiceUUID = "180D"
+let scosche_measurementCharacteristicUUID = "2A37"
+let scosche_bodyLocationCharacteristicUUID = "2A38"
+let scosche_manufactureNameCharacteristicUUID = "2A29"
 
-class Main: UIViewController, UITableViewDataSource {
+class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, CBPeripheralDelegate {
+    
+    var centralManager: CBCentralManager!
+    var scoschePeripheral: CBPeripheral!
     
     @IBOutlet var tv: UITableView!
     
+    @IBOutlet var go: UIButton!
+    @IBOutlet var stop: UIButton!
+    @IBOutlet var reset: UIButton!
+    
     @IBAction func go(sender: UIButton) {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
+        go.hidden = true
+        stop.hidden = false
+        reset.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
     }
     @IBAction func stop(sender: UIButton) {
-        self.timer.invalidate()
+        if stop.titleLabel?.text == "GO"{
+            stop.setTitle("STOP", forState: UIControlState.Normal)
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
+        }
+        else{
+            stop.setTitle("GO", forState: UIControlState.Normal)
+            timer.invalidate()
+            timer = nil
+        }
     }
     @IBAction func reset(sender: UIButton) {
+        stop.setTitle("STOP", forState: UIControlState.Normal)
+        if(timer != nil){
+            timer.invalidate()
+        }
+        timer = nil
+        go.hidden = false
+        stop.hidden = true
+        reset.hidden = true
+        timerSeconds = 0
+        seconds = 0
+        minutes = 0
+        houres = 0
+        tv.reloadData()
     }
     
     let motionManager = CMMotionManager()
@@ -53,13 +92,16 @@ class Main: UIViewController, UITableViewDataSource {
     var oldestValue: Int = 0
     
     var timeStamp: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-    var lastTimeStamp: NSTimeInterval = 0
+    var lastTimeStamp: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
     
     var timer: NSTimer!
-    var seconds = 58
-    var minutes = 59
+    var timerSeconds = 0 //89223 // 24:47:03
+    var seconds = 0
+    var minutes = 0
     var houres = 0
     let timeFormat = "02"
+    var timerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
+    var lastTimerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
     
     
     override func viewDidLoad() {
@@ -139,14 +181,22 @@ class Main: UIViewController, UITableViewDataSource {
             }
         })
         
-        self.tv.dataSource = self
+        tv.dataSource = self
         
         
         
+        seconds = timerSeconds%60
+        minutes = (timerSeconds/60)%60
+        houres = timerSeconds/3600
+        
+        var services = [CBUUID(string: scosche_heartRateServiceUUID), CBUUID(string: scosche_deviceInfoServiceUUID)]
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+        centralManager.scanForPeripheralsWithServices(services, options: nil)
         
     }
     
     func time(){
+        timerSeconds++
         if(seconds < 59){
             seconds++
         }else if(minutes < 59){
@@ -193,7 +243,7 @@ class Main: UIViewController, UITableViewDataSource {
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (self.steps)
         }
-            
+        
         if(indexPath.row == 3){
             cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (houres.format("02")) + ":" + String (minutes.format("02")) + ":" + String(seconds.format("02"))
@@ -210,7 +260,7 @@ class Main: UIViewController, UITableViewDataSource {
         case 2, 3:
             return 105
         default:
-        return 200.0
+            return 200.0
         }
     }
     
@@ -225,4 +275,57 @@ class Main: UIViewController, UITableViewDataSource {
         return UIStatusBarStyle.LightContent
     }
     
+    
+    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+        
+    }
+    
+    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+    }
+    
+    func centralManagerDidUpdateState(central: CBCentralManager!) {
+        if(central.state == CBCentralManagerState.PoweredOff){
+            NSLog("CoreBluetooth BLE hardware is powered off")
+        }
+        else if(central.state == CBCentralManagerState.PoweredOn){
+            NSLog("CoreBluetooth BLE hardware is powered on and ready")
+        }
+        else if(central.state == CBCentralManagerState.Unauthorized){
+            NSLog("CoreBluetooth BLE state is unauthorized")
+        }
+        else if(central.state == CBCentralManagerState.Unknown){
+            NSLog("CoreBluetooth BLE state is unknown")
+        }
+        else if(central.state == CBCentralManagerState.Unsupported){
+            NSLog("CoreBluetooth BLE hardware is unsupported on this platform")
+        }
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
+        
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
+        
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+        
+    }
+    
+    func getHeartBPMData(characteristic: CBCharacteristic!, error: NSError!) {
+        
+    }
+    
+    func getManufactureName(characteristic: CBCharacteristic!) {
+        
+    }
+    
+    func getBodyLocation(characteristic: CBCharacteristic!) {
+        
+    }
+    
+    func doHeartBeat() {
+        
+    }
 }

@@ -821,13 +821,13 @@
                                                             <exclude reference="K2Q-rp-gFc"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <exclude reference="4dI-l5-gyT"/>
-                                                            <exclude reference="Y2W-7l-mLC"/>
                                                             <exclude reference="EEU-Dn-txf"/>
                                                             <exclude reference="F65-qF-GMV"/>
                                                             <exclude reference="MMa-je-NRo"/>
                                                             <exclude reference="Qa4-4f-1Uh"/>
                                                             <exclude reference="p8A-Dj-cFF"/>
+                                                            <exclude reference="4dI-l5-gyT"/>
+                                                            <exclude reference="Y2W-7l-mLC"/>
                                                             <exclude reference="7E4-qU-BRb"/>
                                                             <exclude reference="MbC-HQ-6oJ"/>
                                                             <exclude reference="DMm-eQ-TSu"/>
@@ -845,13 +845,13 @@
                                                             <include reference="K2Q-rp-gFc"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <include reference="4dI-l5-gyT"/>
-                                                            <exclude reference="Y2W-7l-mLC"/>
                                                             <include reference="EEU-Dn-txf"/>
                                                             <exclude reference="F65-qF-GMV"/>
                                                             <exclude reference="MMa-je-NRo"/>
                                                             <exclude reference="Qa4-4f-1Uh"/>
                                                             <include reference="p8A-Dj-cFF"/>
+                                                            <include reference="4dI-l5-gyT"/>
+                                                            <exclude reference="Y2W-7l-mLC"/>
                                                             <include reference="7E4-qU-BRb"/>
                                                             <include reference="MbC-HQ-6oJ"/>
                                                             <include reference="DMm-eQ-TSu"/>
@@ -954,15 +954,15 @@
                                                             <exclude reference="GXk-fz-eSW"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <exclude reference="6CO-gy-gXV"/>
-                                                            <exclude reference="7gt-eG-sds"/>
-                                                            <exclude reference="2hJ-js-nqi"/>
-                                                            <exclude reference="A8L-IN-xMj"/>
-                                                            <exclude reference="xd2-eX-GWW"/>
                                                             <exclude reference="Oaw-YU-YNo"/>
                                                             <exclude reference="SYX-gK-6iQ"/>
                                                             <exclude reference="YWv-bO-rZc"/>
                                                             <exclude reference="djl-J3-gHq"/>
+                                                            <exclude reference="2hJ-js-nqi"/>
+                                                            <exclude reference="A8L-IN-xMj"/>
+                                                            <exclude reference="xd2-eX-GWW"/>
+                                                            <exclude reference="6CO-gy-gXV"/>
+                                                            <exclude reference="7gt-eG-sds"/>
                                                             <exclude reference="Cnm-ef-kCd"/>
                                                             <exclude reference="Gxz-AO-p7R"/>
                                                             <exclude reference="VTU-oI-r2E"/>
@@ -977,15 +977,15 @@
                                                             <include reference="GXk-fz-eSW"/>
                                                         </mask>
                                                         <mask key="constraints">
-                                                            <include reference="6CO-gy-gXV"/>
-                                                            <include reference="7gt-eG-sds"/>
-                                                            <exclude reference="2hJ-js-nqi"/>
-                                                            <exclude reference="A8L-IN-xMj"/>
-                                                            <include reference="xd2-eX-GWW"/>
                                                             <include reference="Oaw-YU-YNo"/>
                                                             <include reference="SYX-gK-6iQ"/>
                                                             <exclude reference="YWv-bO-rZc"/>
                                                             <exclude reference="djl-J3-gHq"/>
+                                                            <exclude reference="2hJ-js-nqi"/>
+                                                            <exclude reference="A8L-IN-xMj"/>
+                                                            <include reference="xd2-eX-GWW"/>
+                                                            <include reference="6CO-gy-gXV"/>
+                                                            <include reference="7gt-eG-sds"/>
                                                             <exclude reference="Cnm-ef-kCd"/>
                                                             <include reference="Gxz-AO-p7R"/>
                                                             <include reference="VTU-oI-r2E"/>
@@ -1326,6 +1326,9 @@
                     <navigationItem key="navigationItem" id="N9E-im-Hdh"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="go" destination="Ayg-c5-IfM" id="1gJ-nh-O6j"/>
+                        <outlet property="reset" destination="zE6-dL-xdf" id="dhl-Nf-sUc"/>
+                        <outlet property="stop" destination="tvR-gb-a1M" id="TTV-or-V7M"/>
                         <outlet property="tv" destination="vOl-7d-CR5" id="33p-jz-3Vp"/>
                     </connections>
                 </viewController>
@@ -1396,7 +1399,8 @@
                                                             <exclude reference="Pbd-F0-dus"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="281" y="36" width="13" height="24.5"/>
                                                         <mask key="constraints">
                                                             <include reference="Pbd-F0-dus"/>
                                                         </mask>
