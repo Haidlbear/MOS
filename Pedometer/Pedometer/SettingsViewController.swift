@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class SettingsViewController: UIViewController{
     
     @IBOutlet weak var settingsTableView: UITableView!
     
@@ -19,30 +18,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     }
     
-    @IBOutlet weak var labelSettingsCell: UILabel!
-    var settings: [String] = ["SET PERSONAL INFO"," SET YOUR GOAL"]
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 98.0
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return settings.count
-    }
-
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:CustomSettingsCell
-        cell = tableView.dequeueReusableCellWithIdentifier("settingsCell", forIndexPath: indexPath) as CustomSettingsCell
-       
-        cell.labelSettingsCell.text = settings[indexPath.row]
-        //change color of the selected Cell
-        var selectedUIView:UIView = UIView()
-        selectedUIView.backgroundColor = UIColor(netHex: 0x4F525B)
-        cell.selectedBackgroundView = selectedUIView
-        
-        return cell
-    }
-
     //change statusbar color to white
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
