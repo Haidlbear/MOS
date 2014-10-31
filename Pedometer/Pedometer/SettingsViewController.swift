@@ -12,6 +12,7 @@ import UIKit
 
 class SettingsViewController: UIViewController{
     
+    
     @IBOutlet weak var settingsTableView: UITableView!
     
  override func viewDidLoad() {
@@ -22,6 +23,10 @@ class SettingsViewController: UIViewController{
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+
+    
+    
+
 }
 
 extension UIColor {
@@ -37,3 +42,5 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
 }
+
+

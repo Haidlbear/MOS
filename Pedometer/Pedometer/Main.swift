@@ -62,9 +62,14 @@ class Main: UIViewController, UITableViewDataSource {
     let timeFormat = "02"
     
     
+    
+    var app = AppSingletonClass.sharedSingletonInstance()
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         motionManager.accelerometerUpdateInterval = 0.01
         motionManager.gyroUpdateInterval = 0.01
         
@@ -223,6 +228,12 @@ class Main: UIViewController, UITableViewDataSource {
     //change statusbar color to white
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "appDataSeque"{
+            let vc = segue.destinationViewController as SettingsViewController
+        }
     }
     
 }

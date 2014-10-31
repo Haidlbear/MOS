@@ -39,7 +39,7 @@
 		239ABD2C19E6ADCE00493B53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		239ABD2D19E6ADCE00493B53 /* PedometerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerTests.swift; sourceTree = "<group>"; };
 		23EE6D2419F92257008F3946 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPersonalInfoViewController.swift; path = ../SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
 		95A1619E19FA452D00367824 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +65,6 @@
 		239ABD0919E6ADCE00493B53 = {
 			isa = PBXGroup;
 			children = (
-				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
 				239ABD1419E6ADCE00493B53 /* Pedometer */,
 				239ABD2A19E6ADCE00493B53 /* PedometerTests */,
 				239ABD1319E6ADCE00493B53 /* Products */,
@@ -84,6 +83,7 @@
 		239ABD1419E6ADCE00493B53 /* Pedometer */ = {
 			isa = PBXGroup;
 			children = (
+				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
 				239ABD1719E6ADCE00493B53 /* AppDelegate.swift */,
 				23EE6D2419F92257008F3946 /* Main.swift */,
 				239ABD1B19E6ADCE00493B53 /* Main.storyboard */,
