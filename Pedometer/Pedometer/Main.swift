@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreMotion
+import Foundation
+
+import CoreBluetooth
+import QuartzCore
 
 extension Int {
     func format(f: String) -> String {
@@ -15,24 +19,27 @@ extension Int {
     }
 }
 
+let scosche_deviceInfoServiceUUID = "180A"
+let scosche_heartRateServiceUUID = "180D"
+let scosche_measurementCharacteristicUUID = "2A37"
+let scosche_bodyLocationCharacteristicUUID = "2A38"
+let scosche_manufactureNameCharacteristicUUID = "2A29"
 
-class Main: UIViewController, UITableViewDataSource {
+class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, CBPeripheralDelegate {
+    
+    var centralManager: CBCentralManager!
+    var scoschePeripheral: CBPeripheral!
     
     @IBOutlet var tv: UITableView!
     
-    @IBAction func go(sender: UIButton) {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
-    }
-    @IBAction func stop(sender: UIButton) {
-        self.timer.invalidate()
-    }
-    @IBAction func reset(sender: UIButton) {
-    }
+    @IBOutlet var go: UIButton!
+    @IBOutlet var stop: UIButton!
+    @IBOutlet var reset: UIButton!
     
     let motionManager = CMMotionManager()
     
     var steps: Int=0
-    var heart: Int=0
+    var bpm: Int=0
     
     var acclX: Double = 0.0
     var acclY: Double = 0.0
@@ -53,13 +60,16 @@ class Main: UIViewController, UITableViewDataSource {
     var oldestValue: Int = 0
     
     var timeStamp: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-    var lastTimeStamp: NSTimeInterval = 0
+    var lastTimeStamp: NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
     
     var timer: NSTimer!
-    var seconds = 58
-    var minutes = 59
+    var timerSeconds = 0 //89223 // 24:47:03
+    var seconds = 0
+    var minutes = 0
     var houres = 0
     let timeFormat = "02"
+    var timerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
+    var lastTimerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
     
     
     
@@ -144,14 +154,52 @@ class Main: UIViewController, UITableViewDataSource {
             }
         })
         
-        self.tv.dataSource = self
+        tv.dataSource = self
         
         
         
+        seconds = timerSeconds%60
+        minutes = (timerSeconds/60)%60
+        houres = timerSeconds/3600
         
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+    }
+    
+    @IBAction func go(sender: UIButton) {
+        go.hidden = true
+        stop.hidden = false
+        reset.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
+    }
+    @IBAction func stop(sender: UIButton) {
+        if stop.titleLabel?.text == "GO"{
+            stop.setTitle("STOP", forState: UIControlState.Normal)
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
+        }
+        else{
+            stop.setTitle("GO", forState: UIControlState.Normal)
+            timer.invalidate()
+            timer = nil
+        }
+    }
+    @IBAction func reset(sender: UIButton) {
+        stop.setTitle("STOP", forState: UIControlState.Normal)
+        if(timer != nil){
+            timer.invalidate()
+        }
+        timer = nil
+        go.hidden = false
+        stop.hidden = true
+        reset.hidden = true
+        timerSeconds = 0
+        seconds = 0
+        minutes = 0
+        houres = 0
+        tv.reloadData()
     }
     
     func time(){
+        timerSeconds++
         if(seconds < 59){
             seconds++
         }else if(minutes < 59){
@@ -187,18 +235,19 @@ class Main: UIViewController, UITableViewDataSource {
         
         if(indexPath.row == 1){
             cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(1) as UILabel).text = String (seconds)
+            (cell.viewWithTag(1) as UILabel).text = String (self.bpm)
             (cell.viewWithTag(2) as UILabel).text = String (seconds)
             (cell.viewWithTag(3) as UILabel).text = String (seconds)
             (cell.viewWithTag(4) as UILabel).text = String (seconds)
             (cell.viewWithTag(5) as UILabel).text = String (seconds)
+            //(cell.viewWithTag(6) as UILabel).text = String (manufacturer)
         }
         
         if(indexPath.row == 2){
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (self.steps)
         }
-            
+        
         if(indexPath.row == 3){
             cell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (houres.format("02")) + ":" + String (minutes.format("02")) + ":" + String(seconds.format("02"))
@@ -215,7 +264,7 @@ class Main: UIViewController, UITableViewDataSource {
         case 2, 3:
             return 105
         default:
-        return 200.0
+            return 200.0
         }
     }
     

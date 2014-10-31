@@ -170,11 +170,11 @@
 				TargetAttributes = {
 					239ABD1119E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = HVE7NT38N3;
+						DevelopmentTeam = J6MZCMF288;
 					};
 					239ABD2619E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = HVE7NT38N3;
+						DevelopmentTeam = J6MZCMF288;
 						TestTargetID = 239ABD1119E6ADCE00493B53;
 					};
 				};
