@@ -283,12 +283,14 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        println(peripheral.name)
-        if peripheral.name == "RHYTHM+"{
-            centralManager.stopScan()
-            scoschePeripheral = peripheral
-            peripheral.delegate = self
-            centralManager.connectPeripheral(peripheral, options: nil)
+        if peripheral != nil && peripheral.name != nil{
+            println(peripheral.name)
+            if peripheral.name == "RHYTHM+"{
+                centralManager.stopScan()
+                scoschePeripheral = peripheral
+                peripheral.delegate = self
+                centralManager.connectPeripheral(peripheral, options: nil)
+            }
         }
     }
     
