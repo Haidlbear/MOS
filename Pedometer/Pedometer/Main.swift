@@ -279,10 +279,96 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         return UIStatusBarStyle.LightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "appDataSeque"{
-            let vc = segue.destinationViewController as SettingsViewController
+    
+    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+        peripheral.delegate = self
+        peripheral .discoverServices(nil)
+        
+        println("Connected: " + (peripheral.state == CBPeripheralState.Connected ? "YES" : "NO"))
+    }
+    
+    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+        if peripheral != nil && peripheral.name != nil{
+            println(peripheral.name)
+            if peripheral.name == "RHYTHM+"{
+                centralManager.stopScan()
+                scoschePeripheral = peripheral
+                peripheral.delegate = self
+                centralManager.connectPeripheral(peripheral, options: nil)
+            }
         }
     }
     
+    func centralManagerDidUpdateState(central: CBCentralManager!) {
+        var bluetooth = false
+        if(central.state == CBCentralManagerState.PoweredOff){
+            NSLog("CoreBluetooth BLE hardware is powered off")
+        }
+        else if(central.state == CBCentralManagerState.PoweredOn){
+            NSLog("CoreBluetooth BLE hardware is powered on and ready")
+            centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        }
+        else if(central.state == CBCentralManagerState.Unauthorized){
+            NSLog("CoreBluetooth BLE state is unauthorized")
+        }
+        else if(central.state == CBCentralManagerState.Unknown){
+            NSLog("CoreBluetooth BLE state is unknown")
+        }
+        else if(central.state == CBCentralManagerState.Unsupported){
+            NSLog("CoreBluetooth BLE hardware is unsupported on this platform")
+        }
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
+        for service in peripheral.services {
+            println("Discovered service: " + (service as CBService).UUID.UUIDString)
+            peripheral.discoverCharacteristics(nil, forService: service as CBService)
+        }
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
+        if service.UUID.UUIDString == scosche_heartRateServiceUUID{
+            for aCharactaristic in service.characteristics {
+                if (aCharactaristic as CBCharacteristic).UUID.UUIDString == scosche_measurementCharacteristicUUID {
+                    scoschePeripheral.setNotifyValue(true, forCharacteristic: aCharactaristic as CBCharacteristic)
+                    println("Found heart rate measurement characteristic")
+                }
+            }
+        }
+        
+        if service.UUID.UUIDString == scosche_deviceInfoServiceUUID{
+            for aCharactaristic in service.characteristics {
+                if (aCharactaristic as CBCharacteristic).UUID.UUIDString == scosche_manufactureNameCharacteristicUUID{
+                    scoschePeripheral.setNotifyValue(true, forCharacteristic: aCharactaristic as CBCharacteristic)
+                    println("Found a device manufacturer name characteristic")
+                }
+            }
+        }
+        
+    }
+    
+    func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+        if characteristic.UUID.UUIDString == scosche_measurementCharacteristicUUID{
+            getHeartBPMData(characteristic, error: error)
+        }
+        if characteristic.UUID.UUIDString == scosche_manufactureNameCharacteristicUUID{
+            getManufactureName(characteristic)
+        }
+    }
+    
+    func getHeartBPMData(characteristic: CBCharacteristic!, error: NSError!) {
+        var data:NSData = characteristic.value
+        println(data)
+        var reportData = [UInt8](count: data.length, repeatedValue:0)
+        data.getBytes(&reportData, length:data.length)
+        self.bpm = Int (reportData[1])
+    }
+    
+    func getManufactureName(characteristic: CBCharacteristic!) {
+        
+    }
+    
+    func doHeartBeat() {
+        
+    }
 }
