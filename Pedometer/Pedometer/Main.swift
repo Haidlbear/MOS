@@ -207,8 +207,10 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
             minutes = 0
             houres++
         }
+        if app.vo2Max > 0{
+            getKcal();
+        }
         self.tv.reloadData()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -232,7 +234,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
         if(indexPath.row == 1){
             cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(1) as UILabel).text = String (self.bpm)
+            (cell.viewWithTag(1) as UILabel).text = String (app.bpm)
             (cell.viewWithTag(2) as UILabel).text = String (seconds)
             (cell.viewWithTag(3) as UILabel).text = String (seconds)
             (cell.viewWithTag(4) as UILabel).text = String (seconds)
@@ -243,7 +245,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         if(indexPath.row == 2){
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (format: "%.1f", Double (self.app.steps) * 0.7)
-            (cell.viewWithTag(2) as UILabel).text = String (self.app.energyExpenditure)
+            (cell.viewWithTag(2) as UILabel).text = String (format: "%.4f", self.app.kcal)
         }
         
         if(indexPath.row == 3){
@@ -349,9 +351,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         if characteristic.UUID.UUIDString == scosche_measurementCharacteristicUUID{
             getHeartBPMData(characteristic, error: error)
         }
-        if characteristic.UUID.UUIDString == scosche_manufactureNameCharacteristicUUID{
-            getManufactureName(characteristic)
-        }
     }
     
     func getHeartBPMData(characteristic: CBCharacteristic!, error: NSError!) {
@@ -362,11 +361,18 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         self.bpm = Int (reportData[1])
     }
     
-    func getManufactureName(characteristic: CBCharacteristic!) {
+    func getKcal(){
+        var gender = 0.0
+        if app.male {
+            gender = 1.0
+        }
         
-    }
-    
-    func doHeartBeat() {
+        var ee1 = -36.3781 + 0.271 * Double (app.age) + 0.394 * Double (app.weight)
+        var ee2 = 0.404 * app.vo2Max + 0.634 * Double (app.bpm)
+        var ee3 = 0.274 * Double (app.age) + 0.103 * Double (app.weight) + 0.380 * app.vo2Max + 0.450 * Double (app.bpm)
         
+        app.energyExpenditure = -59.3954 + gender * (ee1 + ee2) + (1 - gender) * (ee3)
+        
+        app.kcal += (app.energyExpenditure/60)/4168
     }
 }
