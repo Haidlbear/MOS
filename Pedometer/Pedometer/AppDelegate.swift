@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             app.age = userDefaults.valueForKey("age") as Int
             app.height = userDefaults.valueForKey("height") as Int
             app.weight = userDefaults.valueForKey("weight") as Int
-            app.height = userDefaults.valueForKey("par") as Int
+            app.par = userDefaults.valueForKey("par") as Int
             app.male = userDefaults.valueForKey("boolMale") as Bool
         }
         

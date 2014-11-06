@@ -2252,7 +2252,7 @@
                                     <constraint firstAttribute="centerX" secondItem="bju-6a-AYn" secondAttribute="centerX" id="1ln-PR-WyY"/>
                                     <constraint firstItem="K1M-dr-f47" firstAttribute="top" secondItem="0ak-ls-WMG" secondAttribute="top" id="2y7-hK-LmC"/>
                                     <constraint firstAttribute="bottom" secondItem="x4p-cH-6FD" secondAttribute="bottom" constant="497" id="3B1-Ds-XKC">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="394"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="460"/>
                                     </constraint>
                                     <constraint firstItem="bju-6a-AYn" firstAttribute="leading" secondItem="0ak-ls-WMG" secondAttribute="leading" id="3zc-wH-no1"/>
                                     <constraint firstItem="Tvp-1t-Q06" firstAttribute="leading" secondItem="0ak-ls-WMG" secondAttribute="leading" id="6dr-CA-e8S"/>
@@ -2392,7 +2392,7 @@
                             <constraint firstItem="0ak-ls-WMG" firstAttribute="top" secondItem="dt8-bp-tOT" secondAttribute="bottom" constant="114" id="LjN-XI-4jq"/>
                             <constraint firstAttribute="trailing" secondItem="0ak-ls-WMG" secondAttribute="trailing" id="ff2-R0-krT"/>
                             <constraint firstItem="Oys-ge-PpF" firstAttribute="top" secondItem="0ak-ls-WMG" secondAttribute="bottom" constant="56" id="o8I-ry-QoD">
-                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="fSZ-AI-R4V" firstAttribute="top" secondItem="dt8-bp-tOT" secondAttribute="bottom" constant="54" id="op0-Ey-wp5"/>
                             <constraint firstItem="0ak-ls-WMG" firstAttribute="leading" secondItem="vWR-ps-uNz" secondAttribute="leading" id="reh-X2-fb6"/>
