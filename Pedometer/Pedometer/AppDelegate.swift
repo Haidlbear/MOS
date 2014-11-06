@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userDefaults.setValue(app.weight, forKey: "weight")
         userDefaults.setValue(app.par, forKey: "par")
         userDefaults.setBool(app.male, forKey: "boolMale")
+        userDefaults.setValue(app.vo2Max, forKey: "vo2Max")
         userDefaults.synchronize() // don't forget this!!!!
     }
     
@@ -70,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             app.height = userDefaults.valueForKey("height") as Int
             app.weight = userDefaults.valueForKey("weight") as Int
             app.par = userDefaults.valueForKey("par") as Int
+            app.vo2Max = userDefaults.valueForKey("vo2Max") as Double
             app.male = userDefaults.valueForKey("boolMale") as Bool
         }
         
