@@ -114,7 +114,9 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
                 genderMultiplicator = 1
             }
             
-            app.vo2Max = 0.133 * Double(app.age) - 0.005 * Double(pow(Double(app.age),2)) + (11.403 * Double(genderMultiplicator)) + (1.463 * Double(app.par)) + (9.17 * Double(app.height)) - (0.254 * Double(app.weight)) + 34.143
+            var vo1 = 0.133 * Double(app.age) - 0.005 * Double(pow(Double(app.age),2))
+            var vo2 = (11.403 * Double(genderMultiplicator)) + (1.463 * Double(app.par))
+            app.vo2Max = vo1 + vo2 + (9.17 * (Double(app.height))/100) - (0.254 * Double(app.weight)) + 34.143
         }
         
         appDelegate.saveAllData()

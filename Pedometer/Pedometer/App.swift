@@ -19,19 +19,21 @@ class AppSingletonClass :NSObject {
     
     var steps = 0
     var distance = 0
-    var energyExpenditure = 0
+    var bpm = 120
+    var kcal = 0.0
     var time = 0
+
     
-    var vo2Max: Double = 0.0
+    var vo2Max = 0.0
+    var energyExpenditure = 0.0
+    
     
     //personal informations
     var name: String = "your name"
-    var age: Int = 0
-    var height: Int = 0
-    var weight: Int = 0
-    var par: Int = 0
-    
-    
+    var age = 0
+    var height = 0
+    var weight = 0
+    var par = 0
     
     //goals
     var stepsGoal:Int = 0
