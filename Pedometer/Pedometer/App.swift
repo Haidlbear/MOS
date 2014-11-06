@@ -18,6 +18,8 @@ class AppSingletonClass :NSObject {
     var energyExpenditure = 0
     var time = 0
     
+    var vo2Max: Double = 0.0
+    
     //personal informations
     var name: String = "your name"
     var age: Int = 0
