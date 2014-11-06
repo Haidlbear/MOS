@@ -1588,7 +1588,7 @@
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="40"/>
                                                 </variation>
@@ -1688,7 +1688,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="BuG-Ae-Odj"/>
@@ -1807,19 +1807,22 @@
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="59" id="2OY-dE-1KR"/>
+                                                    <constraint firstAttribute="width" constant="121" id="Dwq-Ub-yDq"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="2OY-dE-1KR"/>
+                                                        <exclude reference="Dwq-Ub-yDq"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="59"/>
                                                     <mask key="constraints">
                                                         <include reference="2OY-dE-1KR"/>
+                                                        <include reference="Dwq-Ub-yDq"/>
                                                     </mask>
                                                 </variation>
                                             </textField>
@@ -1916,23 +1919,26 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="69" placeholder="24" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OzU-Ia-ddS">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="230" placeholder="24" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OzU-Ia-ddS">
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="121" id="fYa-iW-A4Y"/>
                                                     <constraint firstAttribute="height" constant="59" id="u0k-1c-5iL"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="fYa-iW-A4Y"/>
                                                         <exclude reference="u0k-1c-5iL"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="59"/>
                                                     <mask key="constraints">
+                                                        <include reference="fYa-iW-A4Y"/>
                                                         <include reference="u0k-1c-5iL"/>
                                                     </mask>
                                                 </variation>
@@ -1949,8 +1955,11 @@
                                             <constraint firstAttribute="height" constant="97" id="nkt-ZA-PJg">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
                                             </constraint>
+                                            <constraint firstItem="5WB-H6-LIt" firstAttribute="leading" secondItem="OzU-Ia-ddS" secondAttribute="trailing" constant="30" id="ucN-2n-qN9">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="72"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerX" secondItem="OzU-Ia-ddS" secondAttribute="centerX" id="ygU-4J-wWn">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="-10"/>
+                                                <variation key="heightClass=regular-widthClass=compact" constant="-9.5"/>
                                             </constraint>
                                             <constraint firstItem="5WB-H6-LIt" firstAttribute="top" secondItem="KjK-Hn-xVA" secondAttribute="top" constant="30" id="yhA-56-L5v"/>
                                         </constraints>
@@ -1962,12 +1971,13 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="nkt-ZA-PJg"/>
-                                                <exclude reference="GhJ-pq-Ppr"/>
-                                                <exclude reference="yhA-56-L5v"/>
-                                                <exclude reference="C9b-u1-Gjz"/>
-                                                <exclude reference="ygU-4J-wWn"/>
                                                 <exclude reference="IKm-Cm-8xZ"/>
                                                 <exclude reference="PBd-lz-LrF"/>
+                                                <exclude reference="C9b-u1-Gjz"/>
+                                                <exclude reference="ygU-4J-wWn"/>
+                                                <exclude reference="GhJ-pq-Ppr"/>
+                                                <exclude reference="ucN-2n-qN9"/>
+                                                <exclude reference="yhA-56-L5v"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
@@ -1978,12 +1988,13 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="nkt-ZA-PJg"/>
-                                                <include reference="GhJ-pq-Ppr"/>
-                                                <include reference="yhA-56-L5v"/>
-                                                <include reference="C9b-u1-Gjz"/>
-                                                <include reference="ygU-4J-wWn"/>
                                                 <include reference="IKm-Cm-8xZ"/>
                                                 <include reference="PBd-lz-LrF"/>
+                                                <include reference="C9b-u1-Gjz"/>
+                                                <include reference="ygU-4J-wWn"/>
+                                                <include reference="GhJ-pq-Ppr"/>
+                                                <exclude reference="ucN-2n-qN9"/>
+                                                <include reference="yhA-56-L5v"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -2179,7 +2190,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="TRm-so-h41"/>
@@ -2241,7 +2252,7 @@
                                     <constraint firstAttribute="centerX" secondItem="bju-6a-AYn" secondAttribute="centerX" id="1ln-PR-WyY"/>
                                     <constraint firstItem="K1M-dr-f47" firstAttribute="top" secondItem="0ak-ls-WMG" secondAttribute="top" id="2y7-hK-LmC"/>
                                     <constraint firstAttribute="bottom" secondItem="x4p-cH-6FD" secondAttribute="bottom" constant="497" id="3B1-Ds-XKC">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="394"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="460"/>
                                     </constraint>
                                     <constraint firstItem="bju-6a-AYn" firstAttribute="leading" secondItem="0ak-ls-WMG" secondAttribute="leading" id="3zc-wH-no1"/>
                                     <constraint firstItem="Tvp-1t-Q06" firstAttribute="leading" secondItem="0ak-ls-WMG" secondAttribute="leading" id="6dr-CA-e8S"/>
@@ -2373,6 +2384,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.14117647059999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="fSZ-AI-R4V" secondAttribute="centerX" id="9wP-4v-Wij">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
@@ -2380,7 +2392,7 @@
                             <constraint firstItem="0ak-ls-WMG" firstAttribute="top" secondItem="dt8-bp-tOT" secondAttribute="bottom" constant="114" id="LjN-XI-4jq"/>
                             <constraint firstAttribute="trailing" secondItem="0ak-ls-WMG" secondAttribute="trailing" id="ff2-R0-krT"/>
                             <constraint firstItem="Oys-ge-PpF" firstAttribute="top" secondItem="0ak-ls-WMG" secondAttribute="bottom" constant="56" id="o8I-ry-QoD">
-                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="fSZ-AI-R4V" firstAttribute="top" secondItem="dt8-bp-tOT" secondAttribute="bottom" constant="54" id="op0-Ey-wp5"/>
                             <constraint firstItem="0ak-ls-WMG" firstAttribute="leading" secondItem="vWR-ps-uNz" secondAttribute="leading" id="reh-X2-fb6"/>
@@ -2413,6 +2425,9 @@
                                 <include reference="reh-X2-fb6"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="moP-YF-q2f" appends="YES" id="YXk-6g-ja0"/>
+                        </connections>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
@@ -2426,6 +2441,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pv8-Rr-qsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="moP-YF-q2f">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="R99-f0-zbG" id="Rek-SW-svM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3148.5" y="262.5"/>
         </scene>

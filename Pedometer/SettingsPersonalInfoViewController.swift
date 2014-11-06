@@ -70,6 +70,19 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
 
     func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
+        self.initAppModel()
+        textField.resignFirstResponder()
+        return true;
+    }
+
+    
+   @IBAction func hideKeyboard (sender:AnyObject) {
+        self.initAppModel()
+        self.view .endEditing(true)
+    }
+    
+    func initAppModel(){
+        
         if(self.checkIfValidNumber(tfAge.text)){
             if(tfAge.text.toInt()>5 && tfAge.text.toInt()<100){
                 app.age = tfAge.text.toInt()!
@@ -86,7 +99,7 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         }
         
         if(self.checkIfValidNumber(tfPAR.text)){
-            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<7){
+            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<8){
                 app.par = tfPAR.text.toInt()!
             }
         }
@@ -97,20 +110,19 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         if(checkIfAllDataAvailable())
         {
             var genderMultiplicator = 0
-
+            
             if(app.male){
                 genderMultiplicator = 1
             }
             
-        app.vo2Max = 0.133 * Double(app.age) - 0.005 * Double(pow(Double(app.age),2)) + (11.403 * Double(genderMultiplicator)) + (1.463 * Double(app.par)) + (9.17 * Double(app.height)) - (0.254 * Double(app.weight)) + 34.143
+            app.vo2Max = 0.133 * Double(app.age) - 0.005 * Double(pow(Double(app.age),2)) + (11.403 * Double(genderMultiplicator)) + (1.463 * Double(app.par)) + (9.17 * Double(app.height)) - (0.254 * Double(app.weight)) + 34.143
         }
         
         
         //remove keyboard after pressing enter button
-        textField.resignFirstResponder()
-        return true;
-    }
 
+    }
+    
     
     func checkIfValidNumber(number: String) -> Bool
     {
@@ -152,5 +164,6 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         }
         return false
     }
+    
 
 }
