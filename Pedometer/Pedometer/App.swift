@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import CoreData
 
 private let SingletonClassSharedInstance = AppSingletonClass()
 
 class AppSingletonClass :NSObject {
+    
+    
     
     var male:Bool = true
     var female:Bool = false
@@ -21,10 +24,10 @@ class AppSingletonClass :NSObject {
     var time = 0
     
     //personal informations
-    var name: String = "test"
+    var name: String = "your name"
     var age: Int = 0
     var height: Int = 0
-    var weight: Int = 0
+    var weight: Double = 0.0
     
     //goals
     var stepsGoal:Int = 0

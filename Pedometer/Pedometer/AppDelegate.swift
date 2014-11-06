@@ -13,17 +13,19 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    func  applicationDidFinishLaunching(application: UIApplication) {    }
+    var app = AppSingletonClass.sharedSingletonInstance()
+    var userDefaults = NSUserDefaults.standardUserDefaults()
+    func  applicationDidFinishLaunching(application: UIApplication) {
+        getAllData()
+    }
     
     func  applicationDidBecomeActive(application: UIApplication) {
+        getAllData()
 
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-       
-        
+        getAllData()
         return true
     }
 
@@ -36,18 +38,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+       saveAllData()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-     
+        getAllData()
     }
 
    
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        saveAllData()
     }
     
+    func saveAllData(){
+        userDefaults.setValue(app.name, forKey: "name")
+        userDefaults.setValue(app.age, forKey: "age")
+        userDefaults.setValue(app.height, forKey: "height")
+        userDefaults.setValue(app.weight, forKey: "weight")
+        userDefaults.setBool(app.male, forKey: "boolMale")
+        userDefaults.setBool(app.female, forKey: "boolFemale")
+        userDefaults.synchronize() // don't forget this!!!!
+    }
+    
+    func getAllData(){
+        
+        if(userDefaults.valueForKey("name") != nil){
+            app.name = userDefaults.valueForKey("name") as String
+            app.age = userDefaults.valueForKey("age") as Int
+            app.height = userDefaults.valueForKey("height") as Int
+            app.weight = userDefaults.valueForKey("weight") as Double
+            app.male = userDefaults.valueForKey("boolMale") as Bool
+            app.female = userDefaults.valueForKey("boolFemale") as Bool
+        }
+        
+       
+
+    }
 
 
 }

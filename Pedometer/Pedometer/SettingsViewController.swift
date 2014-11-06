@@ -10,23 +10,52 @@ import Foundation
 import UIKit
 
 
-class SettingsViewController: UIViewController{
-    
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+{
     
     @IBOutlet weak var settingsTableView: UITableView!
     
- override func viewDidLoad() {
+    override func viewDidLoad() {
+        
+    }
     
+    @IBOutlet weak var labelSettingsCell: UILabel!
+    var settings: [String] = ["SET PERSONAL INFO"," SET YOUR GOAL"]
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 98.0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell!
+        
+        if(indexPath.row == 0){
+            cell = tableView.dequeueReusableCellWithIdentifier("personalInfoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = settings[0]
+        }
+        
+        if(indexPath.row == 1){
+            cell = tableView.dequeueReusableCellWithIdentifier("goalCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = settings[1]
+        
+        }
+
+        //change color of the selected Cell
+        var selectedUIView:UIView = UIView()
+        selectedUIView.backgroundColor = UIColor(netHex: 0x4F525B)
+        cell.selectedBackgroundView = selectedUIView
+        
+        return cell
     }
     
     //change statusbar color to white
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-
-    
-    
-
 }
 
 extension UIColor {
@@ -42,5 +71,3 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
 }
-
-

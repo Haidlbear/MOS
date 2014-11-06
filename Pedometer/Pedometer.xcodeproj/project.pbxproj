@@ -15,6 +15,8 @@
 		95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */; };
 		95A1619F19FA452D00367824 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1619E19FA452D00367824 /* App.swift */; };
 		95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */; };
+		95FBE8801A039EA40050BDBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBE87E1A039EA40050BDBA /* Main.storyboard */; };
+		95FBE8831A03AA6D0050BDBA /* appModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPersonalInfoViewController.swift; path = ../SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
 		95A1619E19FA452D00367824 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		95FBE87F1A039EA40050BDBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Pedometer/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = appModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 		239ABD0919E6ADCE00493B53 = {
 			isa = PBXGroup;
 			children = (
+				95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */,
 				239ABD1419E6ADCE00493B53 /* Pedometer */,
 				239ABD2A19E6ADCE00493B53 /* PedometerTests */,
 				239ABD1319E6ADCE00493B53 /* Products */,
@@ -81,6 +86,7 @@
 		239ABD1419E6ADCE00493B53 /* Pedometer */ = {
 			isa = PBXGroup;
 			children = (
+				95FBE87E1A039EA40050BDBA /* Main.storyboard */,
 				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
 				239ABD1719E6ADCE00493B53 /* AppDelegate.swift */,
 				23EE6D2419F92257008F3946 /* Main.swift */,
@@ -167,11 +173,11 @@
 				TargetAttributes = {
 					239ABD1119E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = J6MZCMF288;
+						DevelopmentTeam = HVE7NT38N3;
 					};
 					239ABD2619E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = J6MZCMF288;
+						DevelopmentTeam = HVE7NT38N3;
 						TestTargetID = 239ABD1119E6ADCE00493B53;
 					};
 				};
@@ -200,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FBE8801A039EA40050BDBA /* Main.storyboard in Resources */,
 				2314700319F111E600E8652E /* Images.xcassets in Resources */,
 				239ABD2219E6ADCE00493B53 /* LaunchScreen.xib in Resources */,
 			);
@@ -224,6 +231,7 @@
 				95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */,
 				95A1619F19FA452D00367824 /* App.swift in Sources */,
 				95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */,
+				95FBE8831A03AA6D0050BDBA /* appModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +260,15 @@
 				239ABD2119E6ADCE00493B53 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		95FBE87E1A039EA40050BDBA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95FBE87F1A039EA40050BDBA /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -425,6 +442,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */,
+			);
+			currentVersion = 95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */;
+			path = appModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 239ABD0A19E6ADCE00493B53 /* Project object */;
 }
