@@ -57,18 +57,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userDefaults.setValue(app.age, forKey: "age")
         userDefaults.setValue(app.height, forKey: "height")
         userDefaults.setValue(app.weight, forKey: "weight")
+        userDefaults.setValue(app.par, forKey: "par")
         userDefaults.setBool(app.male, forKey: "boolMale")
         userDefaults.setBool(app.female, forKey: "boolFemale")
+        
         userDefaults.synchronize() // don't forget this!!!!
     }
     
     func getAllData(){
         
-        if(userDefaults.valueForKey("name") != nil){
+        if(userDefaults.valueForKey("name") != nil && userDefaults.valueForKey("par") != nil){
             app.name = userDefaults.valueForKey("name") as String
             app.age = userDefaults.valueForKey("age") as Int
             app.height = userDefaults.valueForKey("height") as Int
-            app.weight = userDefaults.valueForKey("weight") as Double
+            app.weight = userDefaults.valueForKey("weight") as Int
+            app.height = userDefaults.valueForKey("par") as Int
             app.male = userDefaults.valueForKey("boolMale") as Bool
             app.female = userDefaults.valueForKey("boolFemale") as Bool
         }

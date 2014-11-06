@@ -27,7 +27,8 @@ class AppSingletonClass :NSObject {
     var name: String = "your name"
     var age: Int = 0
     var height: Int = 0
-    var weight: Double = 0.0
+    var weight: Int = 0
+    var par: Int = 0
     
     //goals
     var stepsGoal:Int = 0

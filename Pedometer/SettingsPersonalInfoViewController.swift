@@ -26,6 +26,7 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
     @IBOutlet weak var tfWeight: UITextField!
     @IBOutlet weak var btnMaleOutlet: UIButton!
     @IBOutlet weak var btnFemaleOutlet: UIButton!
+    @IBOutlet weak var tfPAR: UITextField!
 
     
     @IBAction func btnMale(sender: AnyObject) {
@@ -56,12 +57,14 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         tfAge.delegate = self
         tfHeight.delegate = self
         tfWeight.delegate = self
+        tfPAR.delegate = self
         
         //initilize textfileds with data from app-model
         tfName.text = app.name
         tfAge.text = String(app.age)
         tfHeight.text = String(app.height)
-        tfWeight.text = String(format:"%.1f", app.weight)
+        tfWeight.text = String(app.weight)
+        tfPAR.text = String(app.par)
     }
     
 
@@ -72,14 +75,22 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
                 app.age = tfAge.text.toInt()!
             }
         }
-        if(self.checkIfValidDouble(tfWeight.text).0){ //.0 return type is bool
-            app.weight = self.checkIfValidDouble(tfWeight.text).1 //.1 return type is double
-        }
+        if(self.checkIfValidNumber(tfWeight.text).0){ //.0 return type is bool
+            if(tfWeight.text.toInt()>0 && tfWeight.text.toInt()<300){
+                app.weight = tfWeight.text.toInt()!
+            }        }
         if(self.checkIfValidNumber(tfHeight.text)){
             if(tfHeight.text.toInt()>90 && tfHeight.text.toInt()<240){
                 app.height = tfHeight.text.toInt()!
             }
         }
+        
+        if(self.checkIfValidNumber(tfPAR.text)){
+            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<7){
+                app.par = tfPAR.text.toInt()!
+            }
+        }
+        
         app.name = tfName.text
         appDelegate.saveAllData()
         
