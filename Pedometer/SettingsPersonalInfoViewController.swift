@@ -99,7 +99,7 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         }
         
         if(self.checkIfValidNumber(tfPAR.text)){
-            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<7){
+            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<8){
                 app.par = tfPAR.text.toInt()!
             }
         }
