@@ -13,11 +13,6 @@ private let SingletonClassSharedInstance = AppSingletonClass()
 
 class AppSingletonClass :NSObject {
     
-    
-    
-    var male:Bool = true
-    var female:Bool = false
-    
     var steps = 0
     var distance = 0
     var energyExpenditure = 0
@@ -28,6 +23,10 @@ class AppSingletonClass :NSObject {
     var age: Int = 0
     var height: Int = 0
     var weight: Double = 0.0
+    var male:Bool = true
+    var female:Bool = false
+    var par: Int = 0
+    
     
     //goals
     var stepsGoal:Int = 0

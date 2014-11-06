@@ -38,7 +38,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     
     let motionManager = CMMotionManager()
     
-    var steps: Int=0
     var bpm: Int=0
     
     var acclX: Double = 0.0
@@ -70,8 +69,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     let timeFormat = "02"
     var timerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
     var lastTimerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
-    
-    
     
     var app = AppSingletonClass.sharedSingletonInstance()
  
@@ -132,7 +129,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
                                 self.lastTimeStamp = self.timeStamp
                                 self.timeStamp = CACurrentMediaTime()
                                 if(self.timeStamp - self.lastTimeStamp > 0.35){
-                                    self.steps++
+                                    self.app.steps++
                                 }
                                 self.stepDetected = true
                                 
@@ -228,7 +225,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
         if(indexPath.row == 0){
             cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(1) as UILabel).text = String (self.steps)
+            (cell.viewWithTag(1) as UILabel).text = String (self.app.steps)
             (cell.viewWithTag(2) as UIProgressView).progress = 0.8
             (cell.viewWithTag(3) as UILabel).text = String (80)
         }
@@ -245,7 +242,8 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
         if(indexPath.row == 2){
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(1) as UILabel).text = String (self.steps)
+            (cell.viewWithTag(1) as UILabel).text = String (format: "%.1f", Double (self.app.steps) * 0.7)
+            (cell.viewWithTag(2) as UILabel).text = String (self.app.energyExpenditure)
         }
         
         if(indexPath.row == 3){
