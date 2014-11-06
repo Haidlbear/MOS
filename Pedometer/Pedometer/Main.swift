@@ -128,7 +128,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
                             if(self.filteredValue < self.average && !self.stepDetected && self.max > 1.115){
                                 self.lastTimeStamp = self.timeStamp
                                 self.timeStamp = CACurrentMediaTime()
-                                if(self.timeStamp - self.lastTimeStamp > 0.35){
+                                if(self.timeStamp - self.lastTimeStamp > 0.2){
                                     self.app.steps++
                                 }
                                 self.stepDetected = true
@@ -245,7 +245,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         if(indexPath.row == 2){
             cell = tableView.dequeueReusableCellWithIdentifier("doubleCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (format: "%.1f", Double (self.app.steps) * 0.7)
-            (cell.viewWithTag(2) as UILabel).text = String (format: "%.4f", self.app.kcal)
+            (cell.viewWithTag(2) as UILabel).text = String (format: "%.0f", self.app.kcal)
         }
         
         if(indexPath.row == 3){
@@ -373,6 +373,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
         app.energyExpenditure = -59.3954 + gender * (ee1 + ee2) + (1 - gender) * (ee3)
         
-        app.kcal += (app.energyExpenditure/60)/4168
+        app.kcal += (app.energyExpenditure/60)/4.168
     }
 }
