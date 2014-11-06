@@ -16,12 +16,13 @@ class AppSingletonClass :NSObject {
     
     
     var male:Bool = true
-    var female:Bool = false
     
     var steps = 0
     var distance = 0
     var energyExpenditure = 0
     var time = 0
+    
+    var vo2Max: Double = 0.0
     
     //personal informations
     var name: String = "your name"
@@ -29,6 +30,8 @@ class AppSingletonClass :NSObject {
     var height: Int = 0
     var weight: Int = 0
     var par: Int = 0
+    
+    
     
     //goals
     var stepsGoal:Int = 0

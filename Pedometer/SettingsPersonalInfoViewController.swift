@@ -33,12 +33,10 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         btnMaleOutlet.setImage(imgMaleEnabled, forState: UIControlState.Normal)
         btnFemaleOutlet.setImage(imgFemaleDisabled, forState: UIControlState.Normal)
         app.male = true
-        app.female = false
     }
     @IBAction func btnFemale(sender: AnyObject) {
         btnFemaleOutlet.setImage(imgFemaleEnabled, forState: UIControlState.Normal)
         btnMaleOutlet.setImage(imgMaleDisabled, forState: UIControlState.Normal)
-        app.female = true
         app.male = false
     }
 
@@ -65,22 +63,24 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         tfHeight.text = String(app.height)
         tfWeight.text = String(app.weight)
         tfPAR.text = String(app.par)
+        
+        
     }
     
 
     func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
         if(self.checkIfValidNumber(tfAge.text)){
-            if(tfAge.text.toInt()>0 && tfAge.text.toInt()<100){
+            if(tfAge.text.toInt()>5 && tfAge.text.toInt()<100){
                 app.age = tfAge.text.toInt()!
             }
         }
         if(self.checkIfValidNumber(tfWeight.text).0){ //.0 return type is bool
-            if(tfWeight.text.toInt()>0 && tfWeight.text.toInt()<300){
+            if(tfWeight.text.toInt()>30 && tfWeight.text.toInt()<300){
                 app.weight = tfWeight.text.toInt()!
             }        }
         if(self.checkIfValidNumber(tfHeight.text)){
-            if(tfHeight.text.toInt()>90 && tfHeight.text.toInt()<240){
+            if(tfHeight.text.toInt()>60 && tfHeight.text.toInt()<240){
                 app.height = tfHeight.text.toInt()!
             }
         }
@@ -93,6 +93,18 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         
         app.name = tfName.text
         appDelegate.saveAllData()
+        
+        if(checkIfAllDataAvailable())
+        {
+            var genderMultiplicator = 0
+
+            if(app.male){
+                genderMultiplicator = 1
+            }
+            
+        app.vo2Max = 0.133 * Double(app.age) - 0.005 * Double(pow(Double(app.age),2)) + (11.403 * Double(genderMultiplicator)) + (1.463 * Double(app.par)) + (9.17 * Double(app.height)) - (0.254 * Double(app.weight)) + 34.143
+        }
+        
         
         //remove keyboard after pressing enter button
         textField.resignFirstResponder()
@@ -131,5 +143,14 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         }
     }
     
+    func checkIfAllDataAvailable () ->Bool
+    {
+        
+        if !(app.age==0 && app.height==0 && app.weight==0)
+        {
+            return true
+        }
+        return false
+    }
 
 }

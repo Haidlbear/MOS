@@ -1810,7 +1810,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="2OY-dE-1KR"/>
@@ -1924,7 +1924,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="u0k-1c-5iL"/>
@@ -2179,7 +2179,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.2156862745" green="0.67843137249999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="55"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="TRm-so-h41"/>
