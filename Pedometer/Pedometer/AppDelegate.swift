@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func getAllData(){
         
-        if(userDefaults.valueForKey("name") != nil && userDefaults.valueForKey("par") != nil){
+        if(userDefaults.valueForKey("name") != nil && userDefaults.valueForKey("par") != nil && userDefaults.valueForKey("vo2Max") != nil){
             app.name = userDefaults.valueForKey("name") as String
             app.age = userDefaults.valueForKey("age") as Int
             app.height = userDefaults.valueForKey("height") as Int

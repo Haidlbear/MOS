@@ -72,7 +72,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="24" y="124.5" width="352" height="15"/>
+                                                        <rect key="frame" x="24" y="125" width="352" height="15"/>
                                                         <mask key="constraints">
                                                             <include reference="puP-Gp-uar"/>
                                                         </mask>
@@ -1353,7 +1353,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="281" y="36" width="13" height="24.5"/>
+                                                        <rect key="frame" x="281" y="36" width="13" height="25"/>
                                                         <mask key="constraints">
                                                             <include reference="Pbd-F0-dus"/>
                                                         </mask>
@@ -1439,7 +1439,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="281" y="36" width="13" height="24.5"/>
+                                                        <rect key="frame" x="281" y="36" width="13" height="25"/>
                                                         <mask key="constraints">
                                                             <include reference="Hse-mJ-v6U"/>
                                                         </mask>
