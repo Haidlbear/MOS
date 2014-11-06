@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2314700319F111E600E8652E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2314700219F111E600E8652E /* Images.xcassets */; };
-		2328490519EFD20200AECD29 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328490419EFD20200AECD29 /* CustomCell.swift */; };
 		239ABD1819E6ADCE00493B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239ABD1719E6ADCE00493B53 /* AppDelegate.swift */; };
-		239ABD1D19E6ADCE00493B53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 239ABD1B19E6ADCE00493B53 /* Main.storyboard */; };
 		239ABD2219E6ADCE00493B53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */; };
 		239ABD2E19E6ADCE00493B53 /* PedometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239ABD2D19E6ADCE00493B53 /* PedometerTests.swift */; };
 		23EE6D2519F92257008F3946 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE6D2419F92257008F3946 /* Main.swift */; };
 		95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */; };
+		95A1619F19FA452D00367824 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1619E19FA452D00367824 /* App.swift */; };
 		95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */; };
-		95EF3C3319F05E9400C2DC98 /* CustomSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF3C3219F05E9400C2DC98 /* CustomSettingsCell.swift */; };
+		95FBE8801A039EA40050BDBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBE87E1A039EA40050BDBA /* Main.storyboard */; };
+		95FBE8831A03AA6D0050BDBA /* appModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,19 +31,19 @@
 
 /* Begin PBXFileReference section */
 		2314700219F111E600E8652E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2328490419EFD20200AECD29 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		239ABD1219E6ADCE00493B53 /* Pedometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pedometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		239ABD1619E6ADCE00493B53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		239ABD1719E6ADCE00493B53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		239ABD1C19E6ADCE00493B53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		239ABD2119E6ADCE00493B53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		239ABD2719E6ADCE00493B53 /* PedometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PedometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		239ABD2C19E6ADCE00493B53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		239ABD2D19E6ADCE00493B53 /* PedometerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedometerTests.swift; sourceTree = "<group>"; };
 		23EE6D2419F92257008F3946 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPersonalInfoViewController.swift; path = ../SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		95A1619E19FA452D00367824 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		95EF3C3219F05E9400C2DC98 /* CustomSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSettingsCell.swift; sourceTree = "<group>"; };
+		95FBE87F1A039EA40050BDBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Pedometer/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = appModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 		239ABD0919E6ADCE00493B53 = {
 			isa = PBXGroup;
 			children = (
-				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
+				95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */,
 				239ABD1419E6ADCE00493B53 /* Pedometer */,
 				239ABD2A19E6ADCE00493B53 /* PedometerTests */,
 				239ABD1319E6ADCE00493B53 /* Products */,
@@ -86,15 +86,15 @@
 		239ABD1419E6ADCE00493B53 /* Pedometer */ = {
 			isa = PBXGroup;
 			children = (
+				95FBE87E1A039EA40050BDBA /* Main.storyboard */,
+				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
 				239ABD1719E6ADCE00493B53 /* AppDelegate.swift */,
 				23EE6D2419F92257008F3946 /* Main.swift */,
-				239ABD1B19E6ADCE00493B53 /* Main.storyboard */,
-				2328490419EFD20200AECD29 /* CustomCell.swift */,
 				239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */,
 				2314700219F111E600E8652E /* Images.xcassets */,
 				239ABD1519E6ADCE00493B53 /* Supporting Files */,
 				95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */,
-				95EF3C3219F05E9400C2DC98 /* CustomSettingsCell.swift */,
+				95A1619E19FA452D00367824 /* App.swift */,
 			);
 			path = Pedometer;
 			sourceTree = "<group>";
@@ -173,11 +173,11 @@
 				TargetAttributes = {
 					239ABD1119E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = J6MZCMF288;
+						DevelopmentTeam = HVE7NT38N3;
 					};
 					239ABD2619E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = J6MZCMF288;
+						DevelopmentTeam = HVE7NT38N3;
 						TestTargetID = 239ABD1119E6ADCE00493B53;
 					};
 				};
@@ -206,8 +206,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FBE8801A039EA40050BDBA /* Main.storyboard in Resources */,
 				2314700319F111E600E8652E /* Images.xcassets in Resources */,
-				239ABD1D19E6ADCE00493B53 /* Main.storyboard in Resources */,
 				239ABD2219E6ADCE00493B53 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,11 +227,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				23EE6D2519F92257008F3946 /* Main.swift in Sources */,
-				2328490519EFD20200AECD29 /* CustomCell.swift in Sources */,
 				239ABD1819E6ADCE00493B53 /* AppDelegate.swift in Sources */,
 				95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */,
-				95EF3C3319F05E9400C2DC98 /* CustomSettingsCell.swift in Sources */,
+				95A1619F19FA452D00367824 /* App.swift in Sources */,
 				95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */,
+				95FBE8831A03AA6D0050BDBA /* appModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,20 +254,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		239ABD1B19E6ADCE00493B53 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				239ABD1C19E6ADCE00493B53 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				239ABD2119E6ADCE00493B53 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		95FBE87E1A039EA40050BDBA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95FBE87F1A039EA40050BDBA /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -441,6 +442,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */,
+			);
+			currentVersion = 95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */;
+			path = appModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 239ABD0A19E6ADCE00493B53 /* Project object */;
 }

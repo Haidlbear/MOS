@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var app = Main()
+    var app = AppSingletonClass.sharedSingletonInstance()
+    var userDefaults = NSUserDefaults.standardUserDefaults()
+    func  applicationDidFinishLaunching(application: UIApplication) {
+        getAllData()
+    }
+    
+    func  applicationDidBecomeActive(application: UIApplication) {
+        getAllData()
 
-
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        getAllData()
         return true
     }
 
@@ -26,26 +36,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        app.lastTimerTimeStamp = CACurrentMediaTime()
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+       saveAllData()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        getAllData()
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
-        
-        app.timerTimeStamp = CACurrentMediaTime()
-        app.timerSeconds += Int (app.timerTimeStamp - app.lastTimerTimeStamp)
-        println(app.timerTimeStamp - app.lastTimerTimeStamp)
-
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
+   
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        saveAllData()
+    }
+    
+    func saveAllData(){
+        userDefaults.setValue(app.name, forKey: "name")
+        userDefaults.setValue(app.age, forKey: "age")
+        userDefaults.setValue(app.height, forKey: "height")
+        userDefaults.setValue(app.weight, forKey: "weight")
+        userDefaults.setBool(app.male, forKey: "boolMale")
+        userDefaults.setBool(app.female, forKey: "boolFemale")
+        userDefaults.synchronize() // don't forget this!!!!
+    }
+    
+    func getAllData(){
+        
+        if(userDefaults.valueForKey("name") != nil){
+            app.name = userDefaults.valueForKey("name") as String
+            app.age = userDefaults.valueForKey("age") as Int
+            app.height = userDefaults.valueForKey("height") as Int
+            app.weight = userDefaults.valueForKey("weight") as Double
+            app.male = userDefaults.valueForKey("boolMale") as Bool
+            app.female = userDefaults.valueForKey("boolFemale") as Bool
+        }
+        
+       
+
     }
 
 

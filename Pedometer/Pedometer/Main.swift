@@ -72,9 +72,14 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     var lastTimerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
     
     
+    
+    var app = AppSingletonClass.sharedSingletonInstance()
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         motionManager.accelerometerUpdateInterval = 0.01
         motionManager.gyroUpdateInterval = 0.01
         

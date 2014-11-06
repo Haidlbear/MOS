@@ -15,8 +15,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var settingsTableView: UITableView!
     
- override func viewDidLoad() {
-    
+    override func viewDidLoad() {
+        
     }
     
     @IBOutlet weak var labelSettingsCell: UILabel!
@@ -27,14 +27,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return settings.count
+        return 2
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:CustomSettingsCell
-        cell = tableView.dequeueReusableCellWithIdentifier("settingsCell", forIndexPath: indexPath) as CustomSettingsCell
-       
-        cell.labelSettingsCell.text = settings[indexPath.row]
+        var cell:UITableViewCell!
+        
+        if(indexPath.row == 0){
+            cell = tableView.dequeueReusableCellWithIdentifier("personalInfoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = settings[0]
+        }
+        
+        if(indexPath.row == 1){
+            cell = tableView.dequeueReusableCellWithIdentifier("goalCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = settings[1]
+        
+        }
+
         //change color of the selected Cell
         var selectedUIView:UIView = UIView()
         selectedUIView.backgroundColor = UIColor(netHex: 0x4F525B)
@@ -42,7 +51,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
-
+    
     //change statusbar color to white
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
