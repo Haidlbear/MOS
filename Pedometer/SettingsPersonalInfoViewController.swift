@@ -131,7 +131,7 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
             return true
         }
         else {
-            //valid number
+            //is valid number
             return false
         }
     }
