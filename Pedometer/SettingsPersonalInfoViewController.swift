@@ -93,19 +93,18 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
                 app.weight = tfWeight.text.toInt()!
             }        }
         if(self.checkIfValidNumber(tfHeight.text)){
-            if(tfHeight.text.toInt()>60 && tfHeight.text.toInt()<240){
+            if(tfHeight.text.toInt()>60 && tfHeight.text.toInt()<250){
                 app.height = tfHeight.text.toInt()!
             }
         }
         
         if(self.checkIfValidNumber(tfPAR.text)){
-            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<8){
+            if(tfPAR.text.toInt()>=0 && tfPAR.text.toInt()<8){
                 app.par = tfPAR.text.toInt()!
             }
         }
         
         app.name = tfName.text
-        appDelegate.saveAllData()
         
         if(checkIfAllDataAvailable())
         {
@@ -118,7 +117,7 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
             app.vo2Max = 0.133 * Double(app.age) - 0.005 * Double(pow(Double(app.age),2)) + (11.403 * Double(genderMultiplicator)) + (1.463 * Double(app.par)) + (9.17 * Double(app.height)) - (0.254 * Double(app.weight)) + 34.143
         }
         
-        
+        appDelegate.saveAllData()
         //remove keyboard after pressing enter button
 
     }

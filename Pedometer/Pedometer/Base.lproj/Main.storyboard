@@ -1679,7 +1679,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" placeholder="24" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P4g-hx-Svz">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" placeholder="5-99" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P4g-hx-Svz">
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1802,7 +1802,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="188" placeholder="24" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mr8-Bk-hU4">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="188" placeholder="60-250" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mr8-Bk-hU4">
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1919,7 +1919,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="230" placeholder="24" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OzU-Ia-ddS">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="230" placeholder="30-300" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OzU-Ia-ddS">
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -2182,7 +2182,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" placeholder="24" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HET-CF-79A">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="0-7" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HET-CF-79A">
                                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
