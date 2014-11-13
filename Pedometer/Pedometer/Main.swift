@@ -43,8 +43,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     
     let motionManager = CMMotionManager()
     
-    var bpm: Int=0
-    
     var acclX: Double = 0.0
     var acclY: Double = 0.0
     var acclZ: Double = 0.0
@@ -74,9 +72,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     let timeFormat = "02"
     var timerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
     var lastTimerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
-    
     var app = AppSingletonClass.sharedSingletonInstance()
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +80,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
        tv = UITableView()
         
         motionManager.accelerometerUpdateInterval = 0.01
-        motionManager.gyroUpdateInterval = 0.01
         
         motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {
             accelerationData, error in
@@ -233,6 +228,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         if app.vo2Max > 0{
             getKcal();
         }
+        //doHeartBeat(++app.bpm)
         self.tv.reloadData()
     }
     
@@ -250,17 +246,19 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
         if(indexPath.row == 0){
             cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
-            (cell.viewWithTag(1) as UILabel).text = String (self.app.steps)
-            (cell.viewWithTag(2) as UIProgressView).progress = 0.8
-            (cell.viewWithTag(3) as UILabel).text = String (80)
+            (cell.viewWithTag(1) as UILabel).text = String (app.steps)
+            (cell.viewWithTag(2) as UIProgressView).progress = Float(Double(app.steps) / Double(app.stepsGoal))
+            //(cell.viewWithTag(2) as UIProgressView).progress = 0.8
+            (cell.viewWithTag(3) as UILabel).text = String (app.steps * 100 / app.stepsGoal)
+            (cell.viewWithTag(4) as UILabel).text = String (app.stepsGoal)
         }
         
         if(indexPath.row == 1){
             cell = tableView.dequeueReusableCellWithIdentifier("heartCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (app.bpm)
-            (cell.viewWithTag(2) as UILabel).text = String (seconds)
-            (cell.viewWithTag(3) as UILabel).text = String (seconds)
-            (cell.viewWithTag(4) as UILabel).text = String (seconds)
+            (cell.viewWithTag(2) as UILabel).text = String (app.bpmMax)
+            (cell.viewWithTag(3) as UILabel).text = String (app.bpmMin)
+            (cell.viewWithTag(4) as UILabel).text = String (format: "%.0f", app.bpmAverage)
             (cell.viewWithTag(5) as UILabel).text = String (seconds)
             //(cell.viewWithTag(6) as UILabel).text = String (manufacturer)
         }
@@ -297,10 +295,10 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     }
     
     
-    //change statusbar color to white
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
+//    //change statusbar color to white
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return UIStatusBarStyle.LightContent
+//    }
     
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
@@ -381,7 +379,23 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         println(data)
         var reportData = [UInt8](count: data.length, repeatedValue:0)
         data.getBytes(&reportData, length:data.length)
-        self.bpm = Int (reportData[1])
+        doHeartBeat(Int (reportData[1]))
+        }
+    
+    func doHeartBeat(bpm: Int){
+        app.bpm = bpm
+        
+        if bpm < app.bpmMin{
+            app.bpmMin = bpm
+        }
+        if bpm > app.bpmMax{
+            app.bpmMax = bpm
+        }
+        
+        var bpmAmount = app.bpmAmount
+        var sum = (app.bpmAverage * Double(app.bpmAmount)) + Double(bpm)
+        app.bpmAmount++
+        app.bpmAverage = sum / Double (app.bpmAmount)
     }
     
     func getKcal(){

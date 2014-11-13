@@ -17,9 +17,13 @@ class AppSingletonClass :NSObject {
     
     var male:Bool = true
     
-    var steps = 0
+    var steps:Int = 0
     var distance = 0
     var bpm = 120
+    var bpmMin = 999
+    var bpmMax = 0
+    var bpmAverage = 0.0
+    var bpmAmount = 0
     var kcal = 0.0
     var time = 0
 
@@ -36,9 +40,9 @@ class AppSingletonClass :NSObject {
     var par = 0
     
     //goals
-    var stepsGoal:Int = 0
-    var distanceGoal:Int = 0
-    var heartrateGoal:Int = 0
+    var stepsGoal = 200
+    var distanceGoal = 0
+    var heartrateGoal = 0
     
     class func sharedSingletonInstance() -> AppSingletonClass {
         return SingletonClassSharedInstance
