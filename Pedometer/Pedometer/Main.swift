@@ -67,9 +67,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     let timeFormat = "02"
     var timerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
     var lastTimerTimeStamp = NSDate.timeIntervalSinceReferenceDate()
-    
     var app = AppSingletonClass.sharedSingletonInstance()
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -226,8 +224,9 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         if(indexPath.row == 0){
             cell = tableView.dequeueReusableCellWithIdentifier("stepCell", forIndexPath: indexPath) as UITableViewCell
             (cell.viewWithTag(1) as UILabel).text = String (app.steps)
-            (cell.viewWithTag(2) as UIProgressView).progress = Float(Double(app.stepsGoal) / Double(app.steps) / 100.0)
-            (cell.viewWithTag(3) as UILabel).text = String (app.stepsGoal / app.steps)
+            (cell.viewWithTag(2) as UIProgressView).progress = Float(Double(app.steps) / Double(app.stepsGoal))
+            //(cell.viewWithTag(2) as UIProgressView).progress = 0.8
+            (cell.viewWithTag(3) as UILabel).text = String (app.steps * 100 / app.stepsGoal)
             (cell.viewWithTag(4) as UILabel).text = String (app.stepsGoal)
         }
         
@@ -273,10 +272,10 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     }
     
     
-    //change statusbar color to white
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
+//    //change statusbar color to white
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return UIStatusBarStyle.LightContent
+//    }
     
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {

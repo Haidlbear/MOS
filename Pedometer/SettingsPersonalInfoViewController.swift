@@ -1,3 +1,4 @@
+
 //
 //  SettingsPersonalInfoViewController.swift
 //  Pedometer
@@ -9,74 +10,62 @@
 import Foundation
 import UIKit
 
-class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate {
+class SettingsPersonalInfoViewController : UITableViewController, UITextFieldDelegate{
+    
+    
+    @IBOutlet var tv: UITableView!
     var userDefaults = NSUserDefaults.standardUserDefaults()
     var app = AppSingletonClass.sharedSingletonInstance()
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
     
     let imgMaleEnabled = UIImage(named: "ic_male_enabled")
     let imgMaleDisabled = UIImage(named: "ic_male_disabled")
-
+    
     let imgFemaleEnabled = UIImage(named: "ic_woman_enabled")
     let imgFemaleDisabled = UIImage(named: "ic_woman_disabled")
-
-    @IBOutlet weak var tfName: UITextField!
-    @IBOutlet weak var tfAge: UITextField!
-    @IBOutlet weak var tfHeight: UITextField!
-    @IBOutlet weak var tfWeight: UITextField!
-    @IBOutlet weak var btnMaleOutlet: UIButton!
-    @IBOutlet weak var btnFemaleOutlet: UIButton!
-    @IBOutlet weak var tfPAR: UITextField!
-
     
-    @IBAction func btnMale(sender: AnyObject) {
+    var tfName: UITextField!
+    var tfAge: UITextField!
+    var tfHeight: UITextField!
+    var tfWeight: UITextField!
+    var tfPAR: UITextField!
+    var btnMaleOutlet: UIButton!
+    var btnFemaleOutlet: UIButton!
+    
+    
+    func btnMale() {
         btnMaleOutlet.setImage(imgMaleEnabled, forState: UIControlState.Normal)
         btnFemaleOutlet.setImage(imgFemaleDisabled, forState: UIControlState.Normal)
         app.male = true
     }
-    @IBAction func btnFemale(sender: AnyObject) {
+    
+    func btnFemale() {
         btnFemaleOutlet.setImage(imgFemaleEnabled, forState: UIControlState.Normal)
         btnMaleOutlet.setImage(imgMaleDisabled, forState: UIControlState.Normal)
         app.male = false
     }
-
-
+    
+    
     override func viewDidLoad() {
-
-        if(app.male){
-            btnMaleOutlet.setImage(imgMaleEnabled, forState: UIControlState.Normal)
-            btnFemaleOutlet.setImage(imgFemaleDisabled, forState: UIControlState.Normal)
-        }else{
-            btnFemaleOutlet.setImage(imgFemaleEnabled, forState: UIControlState.Normal)
-            btnMaleOutlet.setImage(imgMaleDisabled, forState: UIControlState.Normal)
-        }
+        //tv.dataSource = self
         
-        tfName.delegate = self
-        tfAge.delegate = self
-        tfHeight.delegate = self
-        tfWeight.delegate = self
-        tfPAR.delegate = self
+    
         
         //initilize textfileds with data from app-model
-        tfName.text = app.name
-        tfAge.text = String(app.age)
-        tfHeight.text = String(app.height)
-        tfWeight.text = String(app.weight)
-        tfPAR.text = String(app.par)
         
         
     }
     
-
+    
     func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
     {
         self.initAppModel()
         textField.resignFirstResponder()
         return true;
     }
-
     
-   @IBAction func hideKeyboard (sender:AnyObject) {
+    
+    @IBAction func hideKeyboard (sender:AnyObject) {
         self.initAppModel()
         self.view .endEditing(true)
     }
@@ -122,7 +111,7 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         
         
         //remove keyboard after pressing enter button
-
+        
     }
     
     
@@ -167,5 +156,92 @@ class SettingsPersonalInfoViewController : UIViewController, UITextFieldDelegate
         return false
     }
     
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell!
+        
+        if(indexPath.row == 0){
+            cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = "Name"
+            (cell.viewWithTag(2) as UITextField).text = String (app.name)
+            (cell.viewWithTag(3) as UILabel).text = ""
+            tfName = (cell.viewWithTag(2) as UITextField)
+            tfName.delegate = self
+            tfName.text = app.name
+            tfName.keyboardType = UIKeyboardType.NamePhonePad
+        }
+        
+        if(indexPath.row == 1){
+            cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = "Age"
+            (cell.viewWithTag(2) as UITextField).text = String (app.age)
+            (cell.viewWithTag(3) as UILabel).text = "Years"
+            tfAge = (cell.viewWithTag(2) as UITextField)
+            tfAge.delegate = self
+            tfAge.text = String(app.age)
+        }
+        
+        if(indexPath.row == 2){
+            cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = "Height"
+            (cell.viewWithTag(2) as UITextField).text = String (app.height)
+            (cell.viewWithTag(3) as UILabel).text = "cm"
+            tfHeight = (cell.viewWithTag(2) as UITextField)
+            tfHeight.delegate = self
+            tfHeight.text = String(app.height)
+        }
+        
+        if(indexPath.row == 3){
+            cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = "Weight"
+            (cell.viewWithTag(2) as UITextField).text = String (app.weight)
+            (cell.viewWithTag(3) as UILabel).text = "kg"
+            tfWeight = (cell.viewWithTag(2) as UITextField)
+            tfWeight.delegate = self
+            tfWeight.text = String(app.weight)
+        }
+        
+        if(indexPath.row == 4){
+            cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = "PA-R"
+            (cell.viewWithTag(2) as UITextField).text = String (app.weight)
+            (cell.viewWithTag(3) as UILabel).text = ""
+            tfPAR = (cell.viewWithTag(2) as UITextField)
+            tfPAR.delegate = self
+            tfPAR.text = String(app.par)
+        }
+        
+        if(indexPath.row == 5){
+            cell = tableView.dequeueReusableCellWithIdentifier("genderCell", forIndexPath: indexPath) as UITableViewCell
+            (cell.viewWithTag(1) as UILabel).text = "Gender"
+            btnMaleOutlet = (cell.viewWithTag(2) as UIButton)
+            btnFemaleOutlet = (cell.viewWithTag(3) as UIButton)
+            if(app.male){
+                btnMaleOutlet.setImage(imgMaleEnabled, forState: UIControlState.Normal)
+                btnFemaleOutlet.setImage(imgFemaleDisabled, forState: UIControlState.Normal)
+            }else{
+                btnFemaleOutlet.setImage(imgFemaleEnabled, forState: UIControlState.Normal)
+                btnMaleOutlet.setImage(imgMaleDisabled, forState: UIControlState.Normal)
+            }
+            
+            btnMaleOutlet.addTarget(self, action: "btnMale", forControlEvents: UIControlEvents.TouchUpInside)
+            btnFemaleOutlet.addTarget(self, action: "btnFemale", forControlEvents: UIControlEvents.TouchUpInside)
 
+        }
+
+        return cell
+        
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100.0
+    }
+    
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    
+    
 }
