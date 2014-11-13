@@ -14,9 +14,9 @@
 		23EE6D2519F92257008F3946 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE6D2419F92257008F3946 /* Main.swift */; };
 		95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */; };
 		95A1619F19FA452D00367824 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1619E19FA452D00367824 /* App.swift */; };
+		95E3A1A61A13E75200BF68FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3A1A51A13E75200BF68FE /* LoginViewController.swift */; };
 		95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */; };
 		95FBE8801A039EA40050BDBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBE87E1A039EA40050BDBA /* Main.storyboard */; };
-		95FBE8831A03AA6D0050BDBA /* appModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +41,9 @@
 		23EE6D2419F92257008F3946 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPersonalInfoViewController.swift; path = ../SettingsPersonalInfoViewController.swift; sourceTree = "<group>"; };
 		95A1619E19FA452D00367824 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		95E3A1A51A13E75200BF68FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		95FBE87F1A039EA40050BDBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Pedometer/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = appModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,6 @@
 		239ABD0919E6ADCE00493B53 = {
 			isa = PBXGroup;
 			children = (
-				95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */,
 				239ABD1419E6ADCE00493B53 /* Pedometer */,
 				239ABD2A19E6ADCE00493B53 /* PedometerTests */,
 				239ABD1319E6ADCE00493B53 /* Products */,
@@ -86,15 +85,16 @@
 		239ABD1419E6ADCE00493B53 /* Pedometer */ = {
 			isa = PBXGroup;
 			children = (
-				95FBE87E1A039EA40050BDBA /* Main.storyboard */,
-				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
-				239ABD1719E6ADCE00493B53 /* AppDelegate.swift */,
-				23EE6D2419F92257008F3946 /* Main.swift */,
-				239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */,
-				2314700219F111E600E8652E /* Images.xcassets */,
-				239ABD1519E6ADCE00493B53 /* Supporting Files */,
-				95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */,
 				95A1619E19FA452D00367824 /* App.swift */,
+				239ABD1719E6ADCE00493B53 /* AppDelegate.swift */,
+				95E3A1A51A13E75200BF68FE /* LoginViewController.swift */,
+				23EE6D2419F92257008F3946 /* Main.swift */,
+				95424CF219F0F9370044EB61 /* SettingsPersonalInfoViewController.swift */,
+				95EF3C2E19F0572B00C2DC98 /* SettingsViewController.swift */,
+				2314700219F111E600E8652E /* Images.xcassets */,
+				239ABD2019E6ADCE00493B53 /* LaunchScreen.xib */,
+				95FBE87E1A039EA40050BDBA /* Main.storyboard */,
+				239ABD1519E6ADCE00493B53 /* Supporting Files */,
 			);
 			path = Pedometer;
 			sourceTree = "<group>";
@@ -173,11 +173,11 @@
 				TargetAttributes = {
 					239ABD1119E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = J6MZCMF288;
+						DevelopmentTeam = HVE7NT38N3;
 					};
 					239ABD2619E6ADCE00493B53 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = J6MZCMF288;
+						DevelopmentTeam = HVE7NT38N3;
 						TestTargetID = 239ABD1119E6ADCE00493B53;
 					};
 				};
@@ -226,12 +226,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E3A1A61A13E75200BF68FE /* LoginViewController.swift in Sources */,
 				23EE6D2519F92257008F3946 /* Main.swift in Sources */,
 				239ABD1819E6ADCE00493B53 /* AppDelegate.swift in Sources */,
 				95EF3C2F19F0572B00C2DC98 /* SettingsViewController.swift in Sources */,
 				95A1619F19FA452D00367824 /* App.swift in Sources */,
 				95424CF319F0F9370044EB61 /* SettingsPersonalInfoViewController.swift in Sources */,
-				95FBE8831A03AA6D0050BDBA /* appModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,19 +442,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		95FBE8811A03AA6D0050BDBA /* appModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */,
-			);
-			currentVersion = 95FBE8821A03AA6D0050BDBA /* appModel.xcdatamodel */;
-			path = appModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 239ABD0A19E6ADCE00493B53 /* Project object */;
 }

@@ -13,6 +13,8 @@ import Foundation
 import CoreBluetooth
 import QuartzCore
 
+
+
 extension Int {
     func format(f: String) -> String {
         return NSString(format: "%\(f)d", self)
@@ -26,6 +28,9 @@ let scosche_bodyLocationCharacteristicUUID = "2A38"
 let scosche_manufactureNameCharacteristicUUID = "2A29"
 
 class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, CBPeripheralDelegate {
+    
+    let kPostURL:String = "@http://reecon.eu/pedometer/write.php"
+
     
     var centralManager: CBCentralManager!
     var scoschePeripheral: CBPeripheral!
@@ -76,7 +81,8 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+       tv = UITableView()
+        
         motionManager.accelerometerUpdateInterval = 0.01
         motionManager.gyroUpdateInterval = 0.01
         
@@ -151,7 +157,8 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
             }
         })
         
-        tv.dataSource = self
+            tv.dataSource = self
+
         
         
         
@@ -167,6 +174,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         stop.hidden = false
         reset.hidden = false
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "time", userInfo: nil, repeats: true)
+        
     }
     @IBAction func stop(sender: UIButton) {
         if stop.titleLabel?.text == "GO"{
@@ -193,6 +201,21 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         minutes = 0
         houres = 0
         tv.reloadData()
+        
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        
+        //get current timestamp
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd " // superset of OP's format
+       // dateFormatter.dateFormat = "yyyy-MM-dd h:mm" // superset of OP's format
+        let timestamp = dateFormatter.stringFromDate(NSDate())
+       // println("date: -  \(timestamp)")
+    
+        var user_id = 1
+        
+        self.postSteps(String(self.app.steps), time: timestamp, user_id: String(user_id))
+
     }
     
     func time(){
@@ -375,4 +398,41 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
         app.kcal += (app.energyExpenditure/60)/4.168
     }
+    
+    
+    func postSteps(steps: String, time: String, user_id: String){
+            
+            var request = NSMutableURLRequest(URL: NSURL(string: "http://www.reecon.eu/pedometer/write.php")!)
+            
+            var session = NSURLSession.sharedSession()
+            
+            request.HTTPMethod = "POST"
+        
+            var params = "steps=\(steps)&time=\(time)&user_id=\(user_id)"
+    
+            request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding);
+        
+            var err: NSError?
+        
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            
+            var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+                
+                println("Response: \(response)")
+                
+                var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+                
+                println("Body: \(strData)\n\n")
+                
+                
+            })
+            
+            task.resume()
+        
+            
+    }
+
 }
