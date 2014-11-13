@@ -99,6 +99,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 dispatch_async(dispatch_get_main_queue())  {
                     if( logedIn == "yes"){
+                        self.app.id = id.toInt()!
                         var mvc = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as Main
                         self.navigationController?.pushViewController(mvc, animated: true)
                     }

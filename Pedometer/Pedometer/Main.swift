@@ -77,7 +77,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       tv = UITableView()
         
         motionManager.accelerometerUpdateInterval = 0.01
         
@@ -207,7 +206,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         let timestamp = dateFormatter.stringFromDate(NSDate())
        // println("date: -  \(timestamp)")
     
-        var user_id = 1
+        var user_id = self.app.id
         
         self.postSteps(String(self.app.steps), time: timestamp, user_id: String(user_id))
 

@@ -44,6 +44,9 @@ class AppSingletonClass :NSObject {
     var distanceGoal = 0
     var heartrateGoal = 0
     
+    
+    var id=0
+    
     class func sharedSingletonInstance() -> AppSingletonClass {
         return SingletonClassSharedInstance
     }
