@@ -82,19 +82,18 @@ class SettingsPersonalInfoViewController : UITableViewController, UITextFieldDel
                 app.weight = tfWeight.text.toInt()!
             }        }
         if(self.checkIfValidNumber(tfHeight.text)){
-            if(tfHeight.text.toInt()>60 && tfHeight.text.toInt()<240){
+            if(tfHeight.text.toInt()>60 && tfHeight.text.toInt()<250){
                 app.height = tfHeight.text.toInt()!
             }
         }
         
         if(self.checkIfValidNumber(tfPAR.text)){
-            if(tfPAR.text.toInt()>0 && tfPAR.text.toInt()<8){
+            if(tfPAR.text.toInt()>=0 && tfPAR.text.toInt()<8){
                 app.par = tfPAR.text.toInt()!
             }
         }
         
         app.name = tfName.text
-        appDelegate.saveAllData()
         
         if(checkIfAllDataAvailable())
         {
@@ -109,7 +108,7 @@ class SettingsPersonalInfoViewController : UITableViewController, UITextFieldDel
             app.vo2Max = vo1 + vo2 + (9.17 * (Double(app.height))/100) - (0.254 * Double(app.weight)) + 34.143
         }
         
-        
+        appDelegate.saveAllData()
         //remove keyboard after pressing enter button
         
     }
@@ -123,7 +122,7 @@ class SettingsPersonalInfoViewController : UITableViewController, UITextFieldDel
             return true
         }
         else {
-            //valid number
+            //is valid number
             return false
         }
     }
