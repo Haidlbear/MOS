@@ -72,7 +72,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="24" y="124.5" width="352" height="15"/>
+                                                        <rect key="frame" x="24" y="124" width="352" height="15"/>
                                                         <mask key="constraints">
                                                             <include reference="puP-Gp-uar"/>
                                                         </mask>
@@ -2601,7 +2601,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="225" y="26.5" width="16" height="27"/>
+                                                        <rect key="frame" x="225" y="26" width="16" height="27"/>
                                                         <mask key="constraints">
                                                             <include reference="7jY-FX-BkU"/>
                                                             <exclude reference="jvd-hU-EQq"/>

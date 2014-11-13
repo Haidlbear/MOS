@@ -205,7 +205,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         if app.vo2Max > 0{
             getKcal();
         }
-        doHeartBeat(++app.bpm)
+        //doHeartBeat(++app.bpm)
         self.tv.reloadData()
     }
     
