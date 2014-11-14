@@ -153,9 +153,6 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
         
             tv.dataSource = self
 
-        
-        
-        
         seconds = timerSeconds%60
         minutes = (timerSeconds/60)%60
         houres = timerSeconds/3600
@@ -421,8 +418,9 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
             
             request.HTTPMethod = "POST"
         
-            var params = "steps=\(steps)&time=\(time)&user_id=\(user_id)"
+            var params = "steps=\(steps)&time=\(time)&calories=\(self.app.kcal)&average_heartrate=\(self.app.bpmAverage)&user_id=\(user_id)"
     
+            println(params)
             request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding);
         
             var err: NSError?
@@ -430,8 +428,7 @@ class Main: UIViewController , UITableViewDataSource, CBCentralManagerDelegate, 
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            
+        
             var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
                 
                 println("Response: \(response)")
